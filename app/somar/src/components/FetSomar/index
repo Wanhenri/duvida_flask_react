@@ -1,0 +1,15 @@
+import React, { useEffect } from "react";
+import axios from "axios";
+
+const FetSomar = () => {
+
+    const axios = requeride('axios');
+    axios({
+        method:'get'
+    })
+    }
+
+};
+
+
+export default FetSomar;
