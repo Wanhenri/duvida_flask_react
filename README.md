@@ -1,1 +1,1 @@
-# duvida_flask_react
+# Projeto React + Flask
