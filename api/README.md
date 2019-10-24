@@ -43,4 +43,16 @@
 
 # DESCRIÇÃO
 
+# Api
+
+### requirements.txt
+
+### server.py
+
+### settings.py
+
 ## Controllers
+
+## Routes
+
+## Schema
