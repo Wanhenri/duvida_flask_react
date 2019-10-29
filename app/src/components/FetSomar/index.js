@@ -1,60 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-export const FetSomar = () => { 
-        fetch('http://127.0.0.1:5000/somar_api', {
-            method: 'POST',
-            mode: "no-cors",
-            cache:"no-cache",
-            headers: { "Content-Type": "application/json"}, 
-            body: JSON.stringify({
-                "cidade": "RiodeJaneiro-RJ", 
-                "diasprevisao": "7"
-            })
-        }).then(response => console.log(response)).catch(error => console.log(error));
+import { Card, Container } from "./style";
 
-        return <h1>Teste</h1>;
+const FetSomar = () => {
+  const [weather, setWeather] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/somar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        cidade: "RiodeJaneiro-RJ",
+        diasprevisao: "7"
+      })
+    })
+      .then(response => response.json())
+      .then(data => setWeather(data))
+      .catch(error => console.log(error));
+  }, []);
 
-        
+  return (
+    <Container>
+      {weather.map(w => (
+        <Card key={w.day}>
+          <b>{w.day}</b>
+          <p>{w.city}</p>
+        </Card>
+      ))}
+    </Container>
+  );
 };
 
-
-// funcionando
-//function FetSomar(){ 
-//    useEffect (() => {
-//        fetch("http://127.0.0.1:5000/somar_api", {
-//            method: "post",
-//            mode: "no-cors",
-//            cache:"no-cache",
-//            headers: {
-//                "Accept": "application/json", "Content-Type": "application/json"}, 
-//            body: JSON.stringify({
-//                "cidade": RiodeJaneiro-RJ, 
-//                "diasdeprevisa": 7
-//            })
-//        }).then(function(res){ console.log(res)}
-//        );
-//    }, []);
-//
-//    return <h1>Teste</h1>;
-//};
-
-// export default FetSomar;
-
-//          fetch("/somar_Api").then(response =>
-//            response.json().then(data=> {
-//                console.log(data);
-//            })
-//useEffect (() => {
-//   fetch("http://127.0.0.1:5000/api_somar", {
-//        method: "POST",
-//        mode: 'no-cors',
-//        cache:'no-cache',
-//        headers: {
-//            'Accept': 'application/json', 'Content-Type': 'application/json'}, 
-//        body: JSON.stringify({
-//            cidade: "RiodeJaneiro-RJ", 
-//            diasdeprevisao: "7"
-//        })
-//    }).then(function(res){ console.log(res)}
-//    );
-//}, []);
+export default FetSomar;

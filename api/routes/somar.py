@@ -8,17 +8,22 @@ from controllers.Somar import SomarController
 
 
 def get_weather(cidade, diasprevisao):
-    response_forecast = requests.get(api_url_forecast + diasprevisao+'days?city=' +
-                                     cidade + '&reference=Somar', headers={'x-api-key': api_token})
+    response_forecast = requests.get("{}{}days?city={}&reference=Somar".format(
+        api_url_forecast, diasprevisao, cidade), headers={'x-api-key': api_token})
     json_res_forecast = response_forecast.json()
 
-    response_observer = requests.get(
-        api_url_observer + cidade + '&reference=Somar&days='+diasprevisao+'', headers={'x-api-key': api_token})
+    response_observer = requests.get("{}{}&reference=Somar&days={}".format(
+        api_url_observer, cidade, diasprevisao), headers={'x-api-key': api_token})
     json_res_observer = response_observer.json()
 
     weather_reports = []
 
-    for diasprevisao_out in range(0, int(diasprevisao)):
+    if(isinstance(diasprevisao, str)):
+        intervalo = int(diasprevisao)
+    else:
+        intervalo = diasprevisao
+
+    for diasprevisao_out in range(0, intervalo):
         diasdeprevisao = str(date.today() + timedelta(diasprevisao_out))
         ezw = SomarController()
         json_report = ezw.get_weather(
