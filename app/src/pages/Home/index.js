@@ -13,7 +13,7 @@ const Home = () => (
   <Wrapper>
     <HeaderSomar />
     <Section>
-      <HeaderDays />
+      <FetSomar />
     </Section>
   </Wrapper>
 );

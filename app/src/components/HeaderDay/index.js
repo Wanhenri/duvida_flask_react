@@ -4,7 +4,7 @@ import FetSomar from "../FetSomar";
 
 import { Card, Container } from "./styles";
 
-const HeaderDays = (FetSomar) => {
+const HeaderDays = () => {
     return (
         <Container>
             {weather.map(w => (
