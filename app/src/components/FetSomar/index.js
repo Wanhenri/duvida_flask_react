@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Card, Container } from "./style";
+ import { Card, Container } from "./style";
 
 const FetSomar = () => {
   const [weather, setWeather] = useState([]);
