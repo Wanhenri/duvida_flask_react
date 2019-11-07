@@ -1,13 +1,16 @@
 import React from "react";
 
-import FetSomar from "../FetSomar";
+import { weather } from "../FetSomar/index";
 
 import { Card, Container } from "./styles";
 
-const HeaderDays = () => {
+
+const HeaderDays = props => {
+  const receveWeather = () => props.dispatch(weather());
+
     return (
         <Container>
-            {weather.map(w => (
+            {receveWeather.map(w => (
               <Card key={w.day}>
                 <b>{w.day}</b>
                 <p>{w.city}</p><br />
