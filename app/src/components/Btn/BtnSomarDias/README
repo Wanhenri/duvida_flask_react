@@ -1,0 +1,7 @@
+Constitui na criação de um botão que será utilizado para selecionar
+qual tipo de previsão quer visualizar:
+previsao de 7 dias
+previsao de 10 dias
+previsao de 15 dias
+
+Esse botão para os dados disponibilizados pela API Somar
