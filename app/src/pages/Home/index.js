@@ -4,7 +4,8 @@ import { Wrapper, Section } from "./styles";
 
 import HeaderSomar from "../../components/HeaderSomar";
 import FetSomar from "./../../components/FetSomar";
-import EchartGraph from "../../components/EchartLine"
+import EchartGraph from "../../components/Chart/EchartLine"
+import EchartGraphPie from "../../components/Chart/EchartPie"
 
 // import HeaderDays from "./../../components/HeaderDay"
 
@@ -16,6 +17,7 @@ const Home = () => (
     <Section>
       <FetSomar />
       <EchartGraph />
+      <EchartGraphPie />
     </Section>
   </Wrapper>
 );
