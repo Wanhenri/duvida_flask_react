@@ -9,17 +9,20 @@ import EchartGraphPie from "../../components/Chart/EchartPie"
 
 // import HeaderDays from "./../../components/HeaderDay"
 
-// import FormLead from '../../components/FormLead';
+import FormLead from '../../components/FormLead';
 
 const Home = () => (
   <Wrapper>
     <HeaderSomar />
     <Section>
+      <FormLead />
       <FetSomar />
-      <EchartGraph />
-      <EchartGraphPie />
+
     </Section>
   </Wrapper>
 );
 
 export default Home;
+
+// <EchartGraph />
+// <EchartGraphPie />
