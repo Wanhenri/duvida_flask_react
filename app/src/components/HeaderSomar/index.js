@@ -7,6 +7,8 @@ import TitleSomar from "../../components/TitleSomar";
 
 import SubtitleSomar from '../../objects/SubtitleSomar';
 
+import TimeSummary from '../../objects/TimeSummary'
+
 const HeaderSomar = () => (
     <Header>
         <LogoAvatar />  
@@ -14,6 +16,7 @@ const HeaderSomar = () => (
         <SubtitleSomar>
             Previsões meteorológicas de acordo com a sua localidade
         </SubtitleSomar>
+        <TimeSummary />
     </Header>
 );
 
