@@ -1,9 +1,11 @@
-.App {
+import styled from "styled-components"
+
+export const Wrapper = styled.section `
     text-align: center;
-  }
+  `
   
 
-  .App-header {
+export const Section = styled.div `
     background-color: #fff #282c34;
     min-height: 100vh;
     display: flex;
@@ -12,5 +14,5 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-  }
+`
   

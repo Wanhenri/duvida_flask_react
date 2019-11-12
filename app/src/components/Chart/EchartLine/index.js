@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './styles.css';
+import { Wrapper , Section } from './styles';
 
 import ReactEcharts from "echarts-for-react";
 
@@ -37,8 +37,8 @@ class EchartGraph extends Component {
 
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
+            <Wrapper>
+                <Section>
 
                     <ReactEcharts
                         style={{height: '50vh', width: '100vw'}}
@@ -47,8 +47,8 @@ class EchartGraph extends Component {
                         }}
                         option={this.state.graphOption}
                     />
-                </header>
-            </div>
+                </Section>
+            </Wrapper>
         );
     }
 }
