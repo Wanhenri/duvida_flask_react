@@ -9,17 +9,31 @@ class EchartGraph extends Component {
 
     this.state = {
       graphOption: {
+        title: {
+          text: "JS Front End Frameworks",
+          x: "center"
+        },
+        legend: {
+          orient: "vertical",
+          left: "left",
+          data: ["Forecast", "Observer"]
+        },
         xAxis: {
           type: "category",
           data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         },
         yAxis: {
-          type: "value"
+          type: "value",
+          min: 18,
+          max: 30
         },
         series: [
           {
+            name:"Series 1",
             data: [1, 2, 3, 4, 5, 6, 7],
-            type: "line"
+            type: "line",
+            smooth:true,
+            lineStyle: {color: 'blue'}
           }
         ]
       }
@@ -36,6 +50,7 @@ class EchartGraph extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.data !== prevProps.data) {
       const newOptions = Object.assign(this.state.graphOption, {
+        title: [{text: this.props.textTile, x: "center"}],
         series: [{ type: "line", data: this.props.data }]
       });
       this.echartsReactRef.getEchartsInstance().setOption(newOptions);

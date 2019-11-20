@@ -46,9 +46,10 @@ const FetSomar = () => {
         ))}
       </Container>
       <Container>
-        <EchartGraph data={weather.map(w => w.max_temperature)} />
-        <EchartGraph data={weather.map(w => w.min_temperature)} />
-        <EchartGraph data={weather.map(w => w.rel_humidity_daily_avg)} />
+        <EchartGraph data={weather.map(w => w.max_temperature)} textTile={"Max Temperature"} />
+        <EchartGraph data={weather.map(w => w.max_temperature)} textTile={"Max Temperature"} />
+        <EchartGraph data={weather.map(w => w.min_temperature)} textTile={"Min Temperature"} />
+        <EchartGraph data={weather.map(w => w.rel_humidity_daily_avg)} textTile={"Relativy Humidity daily average"} />
       </Container>
     </Container>
   );

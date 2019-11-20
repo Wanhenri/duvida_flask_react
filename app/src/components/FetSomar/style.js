@@ -17,6 +17,8 @@ export const Card = styled.section`
 
 export const Container = styled.section`
   display: flex;
+  padding-left:20%;
+  padding-top:5%;
   align-content: space-between;
   flex-direction: column;
   * {
