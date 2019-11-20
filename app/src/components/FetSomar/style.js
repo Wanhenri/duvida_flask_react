@@ -6,10 +6,9 @@ export const Card = styled.section`
   max-width: 50%;
   flex-grow: 1;
   color: black;
-  
+
   padding: 25px;
   background-color: #eaeaea;
-  
 
   b {
     font-size: 1.5rem;
@@ -19,4 +18,8 @@ export const Card = styled.section`
 export const Container = styled.section`
   display: flex;
   align-content: space-between;
+  flex-direction: column;
+  * {
+    flex: 1;
+  }
 `;

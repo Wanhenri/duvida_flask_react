@@ -4,12 +4,10 @@ import { Wrapper, Section } from "./styles";
 
 import HeaderSomar from "../../components/HeaderSomar";
 import FetSomar from "./../../components/FetSomar";
-import EchartGraph from "../../components/Chart/EchartLine"
-import EchartGraphPie from "../../components/Chart/EchartPie"
 
 // import HeaderDays from "./../../components/HeaderDay"
 
-import FormLead from '../../components/FormLead';
+import FormLead from "../../components/FormLead";
 
 const Home = () => (
   <Wrapper>
@@ -17,7 +15,6 @@ const Home = () => (
     <Section>
       <FormLead />
       <FetSomar />
-
     </Section>
   </Wrapper>
 );

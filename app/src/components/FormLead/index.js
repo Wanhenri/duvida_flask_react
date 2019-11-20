@@ -17,7 +17,6 @@ const FormLead = () => {
           setLoading(true);
           setContent("Enviando..");
         }}
-        loading={loading}
       >
         {content}
       </BtnSomarCidade>
