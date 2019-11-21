@@ -21,6 +21,7 @@ class prevInpe:
             metar["pressao"] = tag.find("pressao").text
             metar["temperatura"] = tag.find("temperatura").text
             metar["tempo_desc"] = tag.find("tempo_desc").text
+            metar["umidade"] = tag.find("umidade").text
             content.append(metar)
         return content
 

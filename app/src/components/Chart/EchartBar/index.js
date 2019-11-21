@@ -1,0 +1,85 @@
+import React, { Component } from "react";
+import { Wrapper, Section } from "./styles";
+
+import ReactEcharts from "echarts-for-react";
+
+class EchartGraphBar extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      graphOption: {
+        dataset: {
+            source: [
+                ['score', 'amount', 'product'],
+                [89.3, 58212, 'Matcha Latte'],
+                [57.1, 78254, 'Milk Tea'],
+                [74.4, 41032, 'Cheese Cocoa'],
+                [50.1, 12755, 'Cheese Brownie'],
+                [89.7, 20145, 'Matcha Cocoa'],
+                [68.1, 79146, 'Tea'],
+                [19.6, 91852, 'Orange Juice'],
+                [10.6, 101852, 'Lemon Juice'],
+                [32.7, 20112, 'Walnut Brownie']
+            ]
+        },
+        grid: {containLabel: true},
+        xAxis: {name: 'amount'},
+        yAxis: {type: 'category'},
+        visualMap: {
+            orient: 'horizontal',
+            left: 'center',
+            min: 10,
+            max: 100,
+            text: ['High Score', 'Low Score'],
+            // Map the score column to color
+            dimension: 0,
+            inRange: {
+                color: ['#D7DA8B', '#E15457']
+            }
+        },
+        series: [
+            {
+              type: 'bar',
+              encode: {
+                  // Map the "amount" column to X axis.
+                  x: 'amount',
+                  // Map the "product" column to Y axis
+                  y: 'product'
+              }
+            }
+          ]
+        }
+    }
+  };
+  
+
+  componentDidMount() {
+    this.echartsInstance = this.echartsReactRef.getEchartsInstance();
+    this.zr = this.echartsInstance.getZr();
+
+    this.zr.on("click", this.onChartClick);
+  }
+
+  onChartClick = (...rest) => {
+    console.log("App:onClickChart", rest);
+  };
+
+  render() {
+    return (
+      <Wrapper>
+        <Section>
+          <ReactEcharts
+            style={{ height: "50vh", width: "80vw", margin: "auto" }}
+            ref={e => {
+              this.echartsReactRef = e;
+            }}
+            option={this.state.graphOption}
+          />
+        </Section>
+      </Wrapper>
+    );
+  }
+}
+
+export default EchartGraphBar;

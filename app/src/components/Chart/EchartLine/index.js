@@ -61,6 +61,12 @@ class EchartGraph extends Component {
         legend: {
           data: this.props.series.map(s => s.name)
         },
+//        xAxis: this.props.xAxis.map(x => {
+//          return {
+//            type: "category",
+//            data: x.data
+//          };
+//        }),
         yAxis: {
           min:
             Math.ceil(

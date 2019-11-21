@@ -10,7 +10,7 @@ class EchartGraphPie extends Component {
                 backgroundColor: '#2c343c',
 
                 title: {
-                    text: 'Customized Pie',
+                    text: 'Temperatura das Capitais',
                     left: 'center',
                     top: 20,
                     textStyle: {
@@ -33,7 +33,7 @@ class EchartGraphPie extends Component {
                 },
                 series : [
                     {
-                        name:'访问来源',
+                        name:'Capitais',
                         type:'pie',
                         radius : '55%',
                         center: ['50%', '50%'],
@@ -88,6 +88,25 @@ class EchartGraphPie extends Component {
         this.zr.on('click', this.onChartClick);
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.series !== prevProps.series) {
+          const newOptions = Object.assign(this.state.graphOption, {
+            title: [{ text: this.props.textTile}],
+            series: this.props.series.map(s => {
+              return {
+                name: s.name,
+                data: s.data,
+                type: "pie"
+              };
+            }),
+            legend: {
+              data: this.props.series.map(s => s.name)
+            }
+          });
+          this.echartsReactRef.getEchartsInstance().setOption(newOptions);
+        }
+      }
+
     onChartClick = (...rest) => {
         console.log('App:onClickChart', rest);
     };
@@ -98,7 +117,7 @@ class EchartGraphPie extends Component {
                 <Section>
 
                     <ReactEcharts
-                        style={{height: '50vh', width: '100vw'}}
+                        style={{ height: "40vh", width: "70vw", margin: "auto" }}
                         ref={(e) => {
                             this.echartsReactRef = e;
                         }}

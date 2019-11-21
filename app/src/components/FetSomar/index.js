@@ -46,6 +46,28 @@ const FetSomar = () => {
         ))}
       </Container>
       <Container>
+      <EchartGraph
+          xAxis={[
+            {
+              type: "category",
+              data: weather.map(w => w.day)
+            }
+          ]}
+          series={[
+            {
+              name: "Max temperature",
+              data: weather.map(w => w.temperature_daily_max)
+            },
+            {
+              name: "Min temperature",
+              data: weather.map(w => w.temperature_daily_min)
+            }
+          ]}
+          smooth={true}
+          type={"line"}
+          textTile={"Max and Min Temperature Forecast"}
+          limit={5}
+        />
         <EchartGraph
           series={[
             {
@@ -59,14 +81,18 @@ const FetSomar = () => {
           ]}
           smooth={true}
           type={"line"}
-          textTile={"Max and Min Temperature"}
+          textTile={"Max and Min Temperature Observer"}
           limit={5}
         />
         <EchartGraph
           series={[
             {
-              name: "Relativy Humidity daily average",
+              name: "Relativy Humidity daily average Forecast",
               data: weather.map(w => w.rel_humidity_daily_avg)
+            },
+            {
+              name: "Relativy Humidity daily average Observer",
+              data: weather.map(w => w.mean_rel_humidity)
             }
           ]}
           textTile={"Relativy Humidity daily average"}
