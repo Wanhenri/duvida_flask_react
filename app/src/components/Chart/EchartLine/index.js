@@ -14,26 +14,25 @@ class EchartGraph extends Component {
           x: "center"
         },
         legend: {
+          show: true,
           orient: "vertical",
           left: "left",
-          data: ["Forecast", "Observer"]
+          data: [{ name: "Forecast" }, { name: "Observer" }]
         },
         xAxis: {
           type: "category",
           data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         },
         yAxis: {
-          type: "value",
-          min: 18,
-          max: 30
+          type: "value"
         },
         series: [
           {
-            name:"Series 1",
+            name: "Forecast",
             data: [1, 2, 3, 4, 5, 6, 7],
             type: "line",
-            smooth:true,
-            lineStyle: {color: 'blue'}
+            smooth: this.props.smooth || false,
+            lineStyle: { color: "blue" }
           }
         ]
       }
@@ -48,10 +47,40 @@ class EchartGraph extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
+    if (this.props.series !== prevProps.series) {
       const newOptions = Object.assign(this.state.graphOption, {
-        title: [{text: this.props.textTile, x: "center"}],
-        series: [{ type: "line", data: this.props.data }]
+        title: [{ text: this.props.textTile, x: "center" }],
+        series: this.props.series.map(s => {
+          return {
+            name: s.name,
+            data: s.data,
+            type: "line",
+            smooth: this.props.smooth || false
+          };
+        }),
+        legend: {
+          data: this.props.series.map(s => s.name)
+        },
+        yAxis: {
+          min:
+            Math.ceil(
+              Math.min.apply(
+                Math,
+                this.props.series.reduce((a, b) => a.concat(b.data), [])
+              ) / this.props.limit
+            ) *
+              this.props.limit -
+            this.props.limit,
+          max:
+            Math.ceil(
+              Math.max.apply(
+                Math,
+                this.props.series.reduce((a, b) => a.concat(b.data), [])
+              ) / this.props.limit
+            ) *
+              this.props.limit +
+            this.props.limit
+        }
       });
       this.echartsReactRef.getEchartsInstance().setOption(newOptions);
     }
@@ -66,7 +95,7 @@ class EchartGraph extends Component {
       <Wrapper>
         <Section>
           <ReactEcharts
-            style={{ height: "50vh", width: "100vw" }}
+            style={{ height: "50vh", width: "80vw", margin: "auto" }}
             ref={e => {
               this.echartsReactRef = e;
             }}
