@@ -10,7 +10,6 @@ export const Section = styled.section`
 
 export const Wrapper = styled.main`
   color: white;
-  background-color: var(--color-first);
   justify-content: center;
   align-items: center;
 `;

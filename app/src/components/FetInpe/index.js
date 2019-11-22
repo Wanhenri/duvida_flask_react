@@ -79,7 +79,14 @@ const FetInpe = () => {
           textTile={"Temperatura das Capitais"}
           limit={5}
         />
-        <EchartGraphBar />
+        <EchartGraphBar
+          source={[
+            ["Temperatura", "Capital"],
+            ...weather
+              .sort((a, b) => a.temperatura - b.temperatura)
+              .map(w => [w.temperatura, w.codigo])
+          ]}
+        />
       </Container>
     </Container>
   );

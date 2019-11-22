@@ -20,7 +20,6 @@ export const Container = styled.section`
   align-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: auto auto;
   * {
     flex: 1 1 0;
   }
