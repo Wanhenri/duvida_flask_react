@@ -20,12 +20,44 @@ class EchartGraphBar extends Component {
             [68.1, 79146, "Tea"],
             [19.6, 91852, "Orange Juice"],
             [10.6, 101852, "Lemon Juice"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
+            [32.7, 20112, "Walnut Brownie"],
             [32.7, 20112, "Walnut Brownie"]
+
           ]
         },
         grid: { containLabel: true },
         xAxis: { name: "amount" },
         yAxis: { type: "category" },
+        visualMap: {
+          orient: 'horizontal',
+          left: 'center',
+          min: 0,
+          max: 30,
+          text: ['High Score', 'Low Score'],
+          // Map the score column to color
+          dimension: 0,
+          inRange: {
+              color: [
+                '#D7DA8B', '#D7DA8B', '#D7DA8B','#F45577', '#F45577','blue', 'blue', 'green', 'green','white','#E15457']
+          }
+      },
         series: [
           {
             type: "bar",

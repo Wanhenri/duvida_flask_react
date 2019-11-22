@@ -48,14 +48,14 @@ const FetInpe = () => {
               label: {
                 normal: {
                   textStyle: {
-                    color: "rgba(255, 255, 255, 0.3)"
+                    color: "red"
                   }
                 }
               },
               labelLine: {
                 normal: {
                   lineStyle: {
-                    color: "rgba(255, 255, 255, 0.3)"
+                    color: "red"
                   },
                   smooth: 0.2,
                   length: 10,

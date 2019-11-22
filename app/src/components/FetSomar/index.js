@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import { Card, Container } from "./style";
 import EchartGraph from "../Chart/EchartLine";
+import moment from 'moment';
+
+import 'moment/locale/pt-br'
 
 const FetSomar = () => {
   const [weather, setWeather] = useState([]);
@@ -26,7 +29,9 @@ const FetSomar = () => {
       <Container style={{ flexDirection: "row" }}>
         {weather.map(w => (
           <Card key={w.day}>
-            <b>{w.day}</b>
+            <b>{moment(w.day).locale('pt-br').format('dddd')}</b>
+            <br />
+            <b>{moment(w.day).format('DD/MM/YYYY')}</b>
             <p>{w.city}</p>
             <br />
             <b>FORECAST</b>
@@ -49,7 +54,7 @@ const FetSomar = () => {
         <EchartGraph
           xAxis={{
             type: "category",
-            data: weather.map(w => w.day)
+            data: weather.map(w => moment(w.day).locale('pt-br').format('dddd'))
           }}
           series={[
             {

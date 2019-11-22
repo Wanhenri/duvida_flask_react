@@ -5,8 +5,9 @@ import ReactEcharts from "echarts-for-react";
 class EchartGraphPie extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
+    this.state = {      
       graphOption: {
+        backgroundColor: '#ffff',
         title: {
           text: "Temperatura das Capitais",
           left: "center",
@@ -28,8 +29,11 @@ class EchartGraphPie extends Component {
           }
         },
         series: [
-          Object.assign(this.defaultSeries, {
+          {
             name: "Capitais",
+            type: "pie",
+            radius: "55%",
+            center: ["50%", "50%"],
             type: "pie",
             data: [
               { value: 335, name: "直接访问" },
@@ -37,50 +41,43 @@ class EchartGraphPie extends Component {
               { value: 274, name: "联盟广告" },
               { value: 235, name: "视频广告" },
               { value: 400, name: "搜索引擎" }
-            ].sort(function(a, b) {
-              return a.value - b.value;
-            })
-          })
-        ]
+            ].sort(function(a, b) { return a.value - b.value; }),
+            roseType: "radius",
+            label: {
+              normal: {
+                textStyle: {
+                  color: 'rgba(255, 255, 255, 0.3)'
+                }
+              }
+            },
+            labelLine: {
+              normal: {
+                lineStyle: {
+                  color: 'rgba(255, 255, 255, 0.3)'
+                },
+                smooth: 0.2,
+                length: 10,
+                length2: 20
+              }
+            },
+            itemStyle: {
+              normal: {
+                color: "#c26531",
+                shadowBlur: 50,
+                shadowColor: "rgba(0, 0, 0, 0.5)"
+              }
+            },
+            animationType: "scale",
+            animationEasing: "elasticOut",
+            animationDelay: function(idx) {
+              return Math.random() * 200;
+            }          
+          }
+        ]     
       }
     };
   }
 
-  defaultSeries = {
-    radius: "55%",
-    center: ["50%", "50%"],
-    type: "pie",
-    roseType: "radius",
-    label: {
-      normal: {
-        textStyle: {
-          color: "rgba(255, 255, 255, 0.3)"
-        }
-      }
-    },
-    labelLine: {
-      normal: {
-        lineStyle: {
-          color: "rgba(255, 255, 255, 0.3)"
-        },
-        smooth: 0.2,
-        length: 10,
-        length2: 20
-      }
-    },
-    itemStyle: {
-      normal: {
-        color: "#c26531",
-        shadowBlur: 50,
-        shadowColor: "rgba(0, 0, 0, 0.5)"
-      }
-    },
-    animationType: "scale",
-    animationEasing: "elasticOut",
-    animationDelay: function(idx) {
-      return Math.random() * 200;
-    }
-  };
 
   componentDidMount() {
     this.echartsInstance = this.echartsReactRef.getEchartsInstance();
@@ -93,9 +90,7 @@ class EchartGraphPie extends Component {
     if (this.props.series !== prevProps.series) {
       const newOptions = Object.assign(this.state.graphOption, {
         title: [{ text: this.props.textTile }],
-        series: this.props.series.map(s => {
-          return Object.assign(this.defaultSeries, s);
-        }),
+        series: this.props.series,
         legend: {
           data: this.props.series.map(s => s.name)
         }
