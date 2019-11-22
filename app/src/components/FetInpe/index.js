@@ -20,9 +20,9 @@ const FetInpe = () => {
 
   return (
     <Container>
-      <Container style={{ flexDirection: "row" }}>
+      <Container>
         {weather.map(w => (
-          <Card key={w.atualizacao}>
+          <Card key={w.codigo}>
             <b>{w.atualizacao}</b>
             <p>{w.codigo}</p>
             <p>{w.temperatura}</p>

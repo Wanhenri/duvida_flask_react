@@ -46,21 +46,25 @@ const FetSomar = () => {
         ))}
       </Container>
       <Container>
-      <EchartGraph
-          xAxis={[
-            {
-              type: "category",
-              data: weather.map(w => w.day)
-            }
-          ]}
+        <EchartGraph
+          xAxis={{
+            type: "category",
+            data: weather.map(w => w.day)
+          }}
           series={[
             {
-              name: "Max temperature",
-              data: weather.map(w => w.temperature_daily_max)
+              name: "Forecast Max temperature",
+              data: weather.map(w => w.temperature_daily_max),
+              lineStyle: {
+                normal: {
+                  type: "dashed",
+                  width: 1
+                }
+              }
             },
             {
-              name: "Min temperature",
-              data: weather.map(w => w.temperature_daily_min)
+              name: "Observed Max temperature",
+              data: weather.map(w => w.max_temperature)
             }
           ]}
           smooth={true}

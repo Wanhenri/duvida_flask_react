@@ -51,22 +51,15 @@ class EchartGraph extends Component {
       const newOptions = Object.assign(this.state.graphOption, {
         title: [{ text: this.props.textTile, x: "center" }],
         series: this.props.series.map(s => {
-          return {
-            name: s.name,
-            data: s.data,
+          return Object.assign(s, {
             type: "line",
             smooth: this.props.smooth || false
-          };
+          });
         }),
         legend: {
           data: this.props.series.map(s => s.name)
         },
-//        xAxis: this.props.xAxis.map(x => {
-//          return {
-//            type: "category",
-//            data: x.data
-//          };
-//        }),
+        xAxis: this.props.xAxis,
         yAxis: {
           min:
             Math.ceil(

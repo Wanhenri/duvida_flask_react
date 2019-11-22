@@ -44,7 +44,6 @@ class EchartGraphPie extends Component {
         ]
       }
     };
-    console.log(this.state);
   }
 
   defaultSeries = {
@@ -110,7 +109,6 @@ class EchartGraphPie extends Component {
   };
 
   render() {
-    console.log(this.props.series);
     return (
       <Wrapper>
         <Section>
