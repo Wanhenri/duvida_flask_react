@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import { Card, Container } from "./style";
+import { Cards, Container } from "./style";
 import EchartGraph from "../Chart/EchartLine";
 import moment from 'moment';
 
 import 'moment/locale/pt-br'
+import HeaderDays from "../HeaderDay";
 
 const FetSomar = () => {
   const [weather, setWeather] = useState([]);
@@ -25,10 +26,11 @@ const FetSomar = () => {
   }, []);
 
   return (
+ 
     <Container>
       <Container style={{ flexDirection: "row" }}>
         {weather.map(w => (
-          <Card key={w.day}>
+          <Cards key={w.day}>
             <b>{moment(w.day).locale('pt-br').format('dddd')}</b>
             <br />
             <b>{moment(w.day).format('DD/MM/YYYY')}</b>
@@ -47,10 +49,13 @@ const FetSomar = () => {
             <p>{w.max_temperature}</p>
             <p>{w.min_temperature}</p>
             <p>{w.mean_rel_humidity}</p>
-          </Card>
+          </Cards>
         ))}
       </Container>
       <Container>
+        
+        
+
         <EchartGraph
           xAxis={{
             type: "category",
@@ -78,6 +83,10 @@ const FetSomar = () => {
           limit={5}
         />
         <EchartGraph
+          xAxis={{
+            type: "category",
+            data: weather.map(w => moment(w.day).locale('pt-br').format('dddd'))
+          }}
           series={[
             {
               name: "Max temperature",
@@ -94,6 +103,10 @@ const FetSomar = () => {
           limit={5}
         />
         <EchartGraph
+          xAxis={{
+            type: "category",
+            data: weather.map(w => moment(w.day).locale('pt-br').format('dddd'))
+          }}
           series={[
             {
               name: "Relativy Humidity daily average Forecast",

@@ -1,32 +1,20 @@
-import React from "react";
+import React from 'react';
 
-import { weather } from "../FetSomar/index";
-
-import { Card, Container } from "./styles";
+import { Container, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 
 
-const HeaderDays = props => {
-  const receveWeather = () => props.dispatch(weather());
+const HeaderDays = (props) => {
 
     return (
-        <Container>
-            {receveWeather.map(w => (
-              <Card key={w.day}>
-                <b>{w.day}</b>
-                <p>{w.city}</p><br />
-                <b>FORECAST</b><br />
-                <b>Temperatura Max e Min</b>
-                <p>{w.temperature_daily_max}</p>
-                <p>{w.temperature_daily_min}</p>
-                <p>{w.rel_humidity_daily_avg}</p><br />
-                <b>OBSERVER</b><br />
-                <b>Temperatura Max e Min Observer</b>
-                <p>{w.max_temperature}</p>
-                <p>{w.min_temperature}</p>
-                <p>{w.mean_rel_humidity}</p>
-              </Card>
-            ))}
-        </Container>
+        <Row>
+          <Col sm="6">
+            <Card body>
+              <CardTitle>Special Title Treatment</CardTitle>
+              <CardText>With supporting text below as a natural lead-in to addtional content.</CardText>
+              <Button>Go Somewhere</Button>
+            </Card>
+          </Col>
+        </Row>
     )
 };
 

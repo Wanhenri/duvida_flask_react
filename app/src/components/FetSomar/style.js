@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Card = styled.section`
+export const Cards= styled.section`
   display: table;
   table-layout: fixed;
   max-width: 50%;
