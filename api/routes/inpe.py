@@ -2,8 +2,6 @@ import requests
 from flask_restful import Resource
 from flask import request, Response
 
-#import xmltodict
-
 from xml.etree import ElementTree
 
 

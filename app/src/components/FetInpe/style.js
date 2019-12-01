@@ -11,6 +11,11 @@ export const Card = styled.section`
   b {
     font-size: 1.5rem;
   }
+   hr {
+    border-color:red;
+    box-sizing:border-box;
+    width: 100%;
+  }
 `;
 
 export const Container = styled.section`

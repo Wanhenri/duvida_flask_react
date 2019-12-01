@@ -8,12 +8,17 @@ export const Cards= styled.section`
   color: black;
 
   padding: 25px;
-  background-color: #eaeaea;
+  background-color: ${props => props.BackgroundColor};
 
   b {
+    font-size: 1.3rem;
+  }
+
+  p {
     font-size: 1.5rem;
   }
 `;
+
 
 export const Container = styled.section`
   display: flex;
@@ -24,4 +29,13 @@ export const Container = styled.section`
   * {
     flex: 1;
   }
+`;
+
+// #eaeaea
+// não funciona ainda
+export const ColoredLine = styled.hr`
+    color: ${props =>props.color},
+    background-color: ${props =>props.color},
+    height: 2px,
+    width: 100px
 `;

@@ -18,13 +18,39 @@ const FetInpe = () => {
       .catch(error => console.log(error));
   }, []);
 
+  const List = [
+    {cidade:'Santa Maria', uf:'SE'},
+    {cidade:'Val-de-Cans' ,uf:'PA' },
+    {cidade:'Pampulha' ,uf:'MG' },
+    {cidade:'Boa Vista' ,uf:'RR' },
+    {cidade:'Juscelino Kubitschek' ,uf:'DF' },
+    {cidade:'Internacional' ,uf:'MS' },
+    {cidade:'Marechal Rondon' ,uf:'MT' },
+    {cidade:'Afonso Pena' ,uf:'PR' },
+    {cidade:'' ,uf:'' },
+    {cidade:'' ,uf:'' },
+  ];
+
+  const ColoredLine = ({color}) => (
+    <hr
+      style={{
+        color: color,
+        backgroundColor: color,
+        height: 2
+      }}
+    />
+  );
+
   return (
+
+
     <Container>
       <Container>
         {weather.map(w => (
           <Card key={w.codigo}>
             <b>{w.atualizacao}</b>
             <p>{w.codigo}</p>
+            <p><ColoredLine color="red" /></p>
             <p>{w.temperatura}</p>
             <p>{w.tempo_desc}</p>
             <p>{w.umidade}</p>
