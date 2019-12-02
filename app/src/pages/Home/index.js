@@ -14,9 +14,9 @@ const Home = () => (
   <Wrapper>
     <HeaderSomar />
     <Section>
-      <FormLead />
-      <FetInpe />
+      <FormLead />      
       <FetSomar />
+      <FetInpe />
     </Section>
   </Wrapper>
 );

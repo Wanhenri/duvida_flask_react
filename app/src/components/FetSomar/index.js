@@ -12,6 +12,7 @@ import 'moment/locale/pt-br';
 import HeaderDays from "../HeaderDay";
 
 import { CircleProgress } from 'react-gradient-progress';
+import EchartGraphBarHorizontal from "../Chart/EchartBarHorizontal";
 
 fontawesome.library.add();
 
@@ -87,10 +88,34 @@ const FetSomar = () => {
         ))}
       </Container>
       <Container>
-        <div>
-          <h1>TESTE <FontAwesomeIcon className="align-middle redFont" icon="caret-up" /> </h1>
-        </div>
+        <EchartGraphBarHorizontal 
+         
+         xAxis={{
+          type: "category",
+          data: weather.map(w => moment(w.day).locale('pt-br').format('dddd'))
+        }}
+        series={[
+          {
+            name: "Max temperature",
+            type:'bar',
+            data: weather.map(w => w.max_temperature)
+          },
+          {
+            name: "Min temperature",
+            type:'bar',
+            data: weather.map(w => w.min_temperature)
+          },
+          {
+            name: "Relativy Humidity daily average Observer",
+            type:'line',
+            data: weather.map(w => w.mean_rel_humidity)
+          }
+        ]}
+        smooth={true}
+        textTile={"Visao Geral"}
+        limit={5}
         
+        />
 
         <EchartGraph
           xAxis={{
