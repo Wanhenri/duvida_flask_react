@@ -10,6 +10,7 @@ class EchartGraphPie extends Component {
         backgroundColor: '#ffff',
         title: {
           text: "Temperatura das Capitais",
+          subtext:"teste teste teste testes teste teste",
           left: "center",
           top: 20,
           textStyle: {
@@ -89,7 +90,9 @@ class EchartGraphPie extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.series !== prevProps.series) {
       const newOptions = Object.assign(this.state.graphOption, {
-        title: [{ text: this.props.textTile }],
+        title: [{ 
+          text: this.props.textTile,
+          subtext: this.props.subtextTile }],
         series: this.props.series,
         legend: {
           data: this.props.series.map(s => s.name)

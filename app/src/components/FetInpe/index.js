@@ -27,9 +27,31 @@ const FetInpe = () => {
     {cidade:'Internacional' ,uf:'MS' },
     {cidade:'Marechal Rondon' ,uf:'MT' },
     {cidade:'Afonso Pena' ,uf:'PR' },
-    {cidade:'' ,uf:'' },
-    {cidade:'' ,uf:'' },
+    {cidade:'Hercílio Luz' ,uf:'SC' },
+    {cidade:'Pinto Martins' ,uf:'CE' },
+    {cidade:'Santa Genoveva' ,uf:'GO' },
+    {cidade:'Pres. Castro Pinto' ,uf:'PB' },
+    {cidade:'Internacional' ,uf:'AP' },
+    {cidade:'Zumbi dos Palmares' ,uf:'AL' },
+    {cidade:'Ponta Pelada' ,uf:'AM' },
+    {cidade:'Augusto Severo' ,uf:'RN' },
+    {cidade:'Palmas' ,uf:'TO' },
+    {cidade:'Salgado Filho' ,uf:'RS' },
+    {cidade:'Gov. Jorge Teixeira de Oliveira' ,uf:'RO' },
+    {cidade:'Guararapes' ,uf:'PE' },
+    {cidade:'Presidente Médici' ,uf:'AC' },
+    {cidade:'Galeão' ,uf:'RJ' },
+    {cidade:'Dep. Luís Eduardo Magalhães' ,uf:'BA' },
+    {cidade:'Vitória da Conquista' ,uf:'BA' },
+    {cidade:'Mar. Cunha Machado' ,uf:'MA' },
+    {cidade:'Congonhas' ,uf:'SP' },
+    {cidade:'Sen. Petrônio Portella' ,uf:'PI' },
+    {cidade:'Eurico Aguiar Salles' ,uf:'ES' },
   ];
+
+  
+
+
 
   const ColoredLine = ({color}) => (
     <hr
@@ -50,6 +72,7 @@ const FetInpe = () => {
           <Card key={w.codigo}>
             <b>{w.atualizacao}</b>
             <p>{w.codigo}</p>
+            <p></p>
             <p><ColoredLine color="red" /></p>
             <p>{w.temperatura}</p>
             <p>{w.tempo_desc}</p>
@@ -102,7 +125,8 @@ const FetInpe = () => {
               }
             }
           ]}
-          textTile={"Temperatura das Capitais"}
+          textTile={"Estações de Superfície dos Aeroportos"}
+          subtextTile={"Temperatura das Capitais"}
           limit={5}
         />
         <EchartGraphBar
