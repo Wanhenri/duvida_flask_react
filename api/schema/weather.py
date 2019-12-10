@@ -1,5 +1,5 @@
 class WeatherReport():
-    def __init__(self, day, city, lat, lon, temperature_daily_min, temperature_daily_max, rel_humidity_daily_avg, max_temperature, min_temperature, max_rel_humidity, min_rel_humidity, mean_rel_humidity):
+    def __init__(self, day, city, lat, lon, temperature_daily_min, temperature_daily_max, rel_humidity_daily_avg, max_temperature, min_temperature, max_rel_humidity, min_rel_humidity, mean_rel_humidity, metaWeather):
         self.city = city
         self.lat = lat
         self.lon = lon
@@ -12,6 +12,7 @@ class WeatherReport():
         self.max_rel_humidity = max_rel_humidity
         self.min_rel_humidity = min_rel_humidity
         self.mean_rel_humidity = mean_rel_humidity
+        self.metaWeather = metaWeather
 
     def getInfo(self):
         return self.__dict__

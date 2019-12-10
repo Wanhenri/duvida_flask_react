@@ -9,12 +9,15 @@ class SomarController:
         if indexes == []:
             raise ValueError(f"There is no weather info on {date}")
 
+        print()
+
         weather_reports = []
 
         index = indexes[0]
         temps_forecast = data['points']['forecast']
         temps_observed = dataob['points']['observed']
         config = data['points']['location']
+        configWeather = data['meta']['units']
 
         day = str(date)
         city = config['ref']
@@ -28,6 +31,7 @@ class SomarController:
         rel_humidity_daily_avg = str(
             temps_forecast['rel_humidity_daily_avg'][index])
 
+       
         max_temperature = str(temps_observed['max_temperature'][index])
         min_temperature = str(temps_observed['min_temperature'][index])
         max_rel_humidity = str(temps_observed['max_rel_humidity'][index])
@@ -35,7 +39,9 @@ class SomarController:
         mean_rel_humidity = str(
             (float(max_rel_humidity) + float(min_rel_humidity))/2)
 
+        metaWeather = str(configWeather['weather'][index])
+
         weather_report = WeatherReport(day, city, lat, lon, temperature_daily_min, temperature_daily_max,
-                                       rel_humidity_daily_avg, max_temperature, min_temperature, max_rel_humidity, min_rel_humidity, mean_rel_humidity)
+                                       rel_humidity_daily_avg, max_temperature, min_temperature, max_rel_humidity, min_rel_humidity, mean_rel_humidity,metaWeather)
 
         return weather_report.getInfo()
