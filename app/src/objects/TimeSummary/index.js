@@ -9,7 +9,7 @@ const TimeSummary = styled.header`
     width: 100vw;    
     height: 120px;
     position: absolute;    
-    top:100%;
+    top:19%;
     right:70%;
     
     

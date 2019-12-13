@@ -11,6 +11,7 @@ import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid'
 import 'moment/locale/pt-br';
 import HeaderDays from "../HeaderDay";
 
+
 import { CircleProgress } from 'react-gradient-progress';
 import EchartGraphBarHorizontal from "../Chart/EchartBarHorizontal";
 
@@ -56,11 +57,21 @@ const FetSomar = () => {
     <Container>
       <Container style={{ flexDirection: "row" }}>
         {weather.map( w => (
+          <Cards key={w.day} >
+            <HeaderDays day={w.day}/>
+          </Cards>
+          ))}
+      </Container>
+      <Container style={{ flexDirection: "row" }}>
+        {weather.map( w => (
           <Cards key={w.day} BackgroundColor={ '#eaeaea'}>
             <b>{moment(w.day).locale('pt-br').format('dddd')}</b>
             <br />
             <b>{moment(w.day).format('DD/MM/YYYY')}</b>
             <p>{w.city}</p>
+            <br />
+            <p>{w.metaWeather}</p>
+
           </Cards>
           ))}
       </Container>
