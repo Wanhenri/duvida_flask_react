@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Cards= styled.section`
+export const Cards = styled.section`
   display: table;
   table-layout: fixed;
   max-width: 50%;
@@ -19,11 +19,8 @@ export const Cards= styled.section`
   }
 `;
 
-
 export const Container = styled.section`
   display: flex;
-  padding-left:20%;
-  padding-top:5%;
   align-content: space-between;
   flex-direction: column;
   * {
@@ -34,8 +31,13 @@ export const Container = styled.section`
 // #eaeaea
 // não funciona ainda
 export const ColoredLine = styled.hr`
-    color: ${props =>props.color},
-    background-color: ${props =>props.color},
+    color: ${props => props.color},
+    background-color: ${props => props.color},
     height: 2px,
     width: 100px
+`;
+
+export const Section = styled.section`
+  margin: auto auto;
+  display: flex;
 `;

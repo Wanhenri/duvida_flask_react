@@ -18,8 +18,7 @@ const App = () => (
     <Spacing />
     <Reset />
     <Base />
-    <Home />    
-
+    <Home />
   </Fragment>
 );
 

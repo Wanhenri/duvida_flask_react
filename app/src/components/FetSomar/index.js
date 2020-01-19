@@ -1,25 +1,24 @@
 import React, { useState, useEffect, Fragment } from "react";
 
-import { Cards, Container } from "./style";
+import { Cards, Container, Section } from "./style";
 import EchartGraph from "../Chart/EchartLine";
-import moment from 'moment';
+import moment from "moment";
 
-import fontawesome from '@fortawesome/fontawesome'
-import  { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid'
+import fontawesome from "@fortawesome/fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare, faCoffee } from "@fortawesome/fontawesome-free-solid";
 
-import 'moment/locale/pt-br';
+import "moment/locale/pt-br";
 import HeaderDays from "../HeaderDay";
 
-
-import { CircleProgress } from 'react-gradient-progress';
+import { CircleProgress } from "react-gradient-progress";
 import EchartGraphBarHorizontal from "../Chart/EchartBarHorizontal";
 
 fontawesome.library.add();
 
 const styles = {
-  fontFamily: 'sans-serif',
-  textAlign: 'center',
+  fontFamily: "sans-serif",
+  textAlign: "center",
   color: "red"
 };
 
@@ -41,7 +40,7 @@ const FetSomar = () => {
       .catch(error => console.log(error));
   }, []);
 
-  const ColoredLine = ({color}) => (
+  const ColoredLine = ({ color }) => (
     <hr
       style={{
         color: color,
@@ -53,85 +52,153 @@ const FetSomar = () => {
   );
 
   return (
- 
     <Container>
-      <Container style={{ flexDirection: "row" }}>
-        {weather.map( w => (
-          <Cards key={w.day} >
-            <HeaderDays day={w.day}/>
+      <Section style={{ flexDirection: "row" }}>
+        {weather.map(w => (
+          <Cards key={w.day}>
+            <HeaderDays day={w.day} />
           </Cards>
-          ))}
-      </Container>
-      <Container style={{ flexDirection: "row" }}>
-        {weather.map( w => (
-          <Cards key={w.day} BackgroundColor={ '#eaeaea'}>
-            <b>{moment(w.day).locale('pt-br').format('dddd')}</b>
+        ))}
+      </Section>
+      <Section style={{ flexDirection: "row" }}>
+        {weather.map(w => (
+          <Cards key={w.day} BackgroundColor={"#eaeaea"}>
+            <b>
+              {moment(w.day)
+                .locale("pt-br")
+                .format("dddd")}
+            </b>
             <br />
-            <b>{moment(w.day).format('DD/MM/YYYY')}</b>
+            <b>{moment(w.day).format("DD/MM/YYYY")}</b>
             <p>{w.city}</p>
             <br />
             <p>{w.metaWeather}</p>
-
           </Cards>
-          ))}
-      </Container>
-      <Container style={{ flexDirection: "row" }}>
+        ))}
+      </Section>
+      <Section style={{ flexDirection: "row" }}>
         {weather.map(w => (
-          <Cards key={w.day} BackgroundColor={'#ffff'}>
+          <Cards key={w.day} BackgroundColor={"#ffff"}>
             <b>FORECAST</b>
             <br />
             <p></p>
             <b></b>
-            <p><FontAwesomeIcon icon="caret-up" fixedWidth color="red" size="2x"/>{(Math.round(w.temperature_daily_max * 10) / 10 )} &#8451;</p>
-            <p><ColoredLine color="#000033" /></p>
-            <p><FontAwesomeIcon icon="caret-down" fixedWidth color="blue" size="2x"/>{(Math.round(w.temperature_daily_min * 10) / 10 )} &#8451;</p>
+            <p>
+              <FontAwesomeIcon
+                icon="caret-up"
+                fixedWidth
+                color="red"
+                size="2x"
+              />
+              {Math.round(w.temperature_daily_max * 10) / 10} &#8451;
+            </p>
+            <p>
+              <ColoredLine color="#000033" />
+            </p>
+            <p>
+              <FontAwesomeIcon
+                icon="caret-down"
+                fixedWidth
+                color="blue"
+                size="2x"
+              />
+              {Math.round(w.temperature_daily_min * 10) / 10} &#8451;
+            </p>
             <br />
-            <p>UR<CircleProgress percentage={(Math.round(w.rel_humidity_daily_avg * 10) / 10 ) } width={50} fontSize={10} strokeWidth={2} secondaryColor="#f0f0f0"/></p>
+            <p>
+              UR
+              <CircleProgress
+                percentage={Math.round(w.rel_humidity_daily_avg * 10) / 10}
+                width={50}
+                fontSize={10}
+                strokeWidth={2}
+                secondaryColor="#f0f0f0"
+              />
+            </p>
             <br />
             <b>OBSERVER</b>
             <br />
             <b></b>
-            <p><FontAwesomeIcon icon="caret-up" fixedWidth color="red" size="2x"/>{(Math.round(w.max_temperature * 10) / 10 ) } &#8451;</p>
-            <p><ColoredLine color="#000033" /></p>
-            <p><FontAwesomeIcon icon="caret-down" fixedWidth color="blue"  size="2x"/>{(Math.round(w.min_temperature * 10) / 10 )} &#8451;</p>
-            <p>UR<CircleProgress percentage={(Math.round(w.mean_rel_humidity * 10) / 10 )} width={50} fontSize={10} strokeWidth={2} secondaryColor="#f0f0f0"/></p>
+            <p>
+              <FontAwesomeIcon
+                icon="caret-up"
+                fixedWidth
+                color="red"
+                size="2x"
+              />
+              {Math.round(w.max_temperature * 10) / 10} &#8451;
+            </p>
+            <p>
+              <ColoredLine color="#000033" />
+            </p>
+            <p>
+              <FontAwesomeIcon
+                icon="caret-down"
+                fixedWidth
+                color="blue"
+                size="2x"
+              />
+              {Math.round(w.min_temperature * 10) / 10} &#8451;
+            </p>
+            <p>
+              UR
+              <CircleProgress
+                percentage={Math.round(w.mean_rel_humidity * 10) / 10}
+                width={50}
+                fontSize={10}
+                strokeWidth={2}
+                secondaryColor="#f0f0f0"
+              />
+            </p>
           </Cards>
         ))}
-      </Container>
-      <Container>
-        <EchartGraphBarHorizontal 
-         
-         xAxis={{
-          type: "category",
-          data: weather.map(w => moment(w.day).locale('pt-br').format('dddd'))
-        }}
-        series={[
-          {
-            name: "Max temperature",
-            type:'bar',
-            data: weather.map(w => w.max_temperature)
-          },
-          {
-            name: "Min temperature",
-            type:'bar',
-            data: weather.map(w => w.min_temperature)
-          },
-          {
-            name: "Relativy Humidity daily average Observer",
-            type:'line',
-            data: weather.map(w => w.mean_rel_humidity)
-          }
-        ]}
-        smooth={true}
-        textTile={"Visao Geral"}
-        limit={5}
-        
+      </Section>
+      <Section style={{ flexDirection: "column" }}>
+        <EchartGraphBarHorizontal
+          xAxis={{
+            type: "category",
+            data: weather.map(w =>
+              moment(w.day)
+                .locale("pt-br")
+                .format("dddd")
+            ),
+            axisPointer: {
+              type: "shadow"
+            }
+          }}
+          series={[
+            {
+              name: "Max temperature",
+              type: "bar",
+              data: weather.map(w => parseFloat(w.max_temperature)),
+              yAxisIndex: 0
+            },
+            {
+              name: "Min temperature",
+              type: "bar",
+              data: weather.map(w => parseFloat(w.min_temperature)),
+              yAxisIndex: 1
+            },
+            {
+              name: "Relative Humidity Daily Average - Observer",
+              type: "line",
+              data: weather.map(w => parseFloat(w.mean_rel_humidity)),
+              yAxisIndex: 2
+            }
+          ]}
+          smooth={true}
+          textTile={"Visao Geral"}
+          limit={5}
         />
 
         <EchartGraph
           xAxis={{
             type: "category",
-            data: weather.map(w => moment(w.day).locale('pt-br').format('dddd'))
+            data: weather.map(w =>
+              moment(w.day)
+                .locale("pt-br")
+                .format("dddd")
+            )
           }}
           series={[
             {
@@ -157,7 +224,11 @@ const FetSomar = () => {
         <EchartGraph
           xAxis={{
             type: "category",
-            data: weather.map(w => moment(w.day).locale('pt-br').format('dddd'))
+            data: weather.map(w =>
+              moment(w.day)
+                .locale("pt-br")
+                .format("dddd")
+            )
           }}
           series={[
             {
@@ -177,7 +248,11 @@ const FetSomar = () => {
         <EchartGraph
           xAxis={{
             type: "category",
-            data: weather.map(w => moment(w.day).locale('pt-br').format('dddd'))
+            data: weather.map(w =>
+              moment(w.day)
+                .locale("pt-br")
+                .format("dddd")
+            )
           }}
           series={[
             {
@@ -192,16 +267,14 @@ const FetSomar = () => {
           textTile={"Relativy Humidity daily average"}
           smooth={true}
           limit={10}
-        />     
-      </Container>
-      <Container>
+        />
+      </Section>
+      <Section>
         <Fragment style={styles}>
-          <FontAwesomeIcon className="align-middle redFont" icon="caret-up" />        
-         </Fragment>
-      </Container>
-
+          <FontAwesomeIcon className="align-middle redFont" icon="caret-up" />
+        </Fragment>
+      </Section>
     </Container>
-    
   );
 };
 
