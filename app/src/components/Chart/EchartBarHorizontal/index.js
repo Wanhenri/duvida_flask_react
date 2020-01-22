@@ -23,8 +23,9 @@ class EchartGraphBarHorizontal extends Component {
         },
         legend: {
           show: true,
-          orient: "vertical",
+          orient: "horizontal",
           left: "left",
+          padding: 30,
           data: ["蒸发量", "降水量", "平均温度", "平均温度"]
         },
         xAxis: [
@@ -78,7 +79,7 @@ class EchartGraphBarHorizontal extends Component {
           },
           {
             type: "value",
-            name: "Relative Humidity Daily Average - Observer",
+            name: "",
             min: 0,
             max: 25,
             position: "left",
@@ -165,7 +166,7 @@ class EchartGraphBarHorizontal extends Component {
         yAxis: [
           {
             type: "value",
-            name: "Max Temperature",
+            name: "Max",
             min:
               Math.ceil(
                 Math.min.apply(Math, this.props.series[0].data) /
@@ -189,7 +190,7 @@ class EchartGraphBarHorizontal extends Component {
           },
           {
             type: "value",
-            name: "Min Temperature",
+            name: "Min",
             min:
               Math.ceil(
                 Math.min.apply(Math, this.props.series[1].data) /
@@ -217,7 +218,7 @@ class EchartGraphBarHorizontal extends Component {
           },
           {
             type: "value",
-            name: "Relative Humidity Daily Average - Observer",
+            name: "",
             min:
               Math.ceil(
                 Math.min.apply(Math, this.props.series[2].data) /
