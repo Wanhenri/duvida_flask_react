@@ -35,7 +35,6 @@ class EchartGraphPie extends Component {
             type: "pie",
             radius: "55%",
             center: ["50%", "50%"],
-            type: "pie",
             data: [
               { value: 335, name: "直接访问" },
               { value: 310, name: "邮件营销" },

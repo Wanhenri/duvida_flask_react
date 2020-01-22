@@ -13,7 +13,7 @@ const InputSomar = styled.input`
     border:1px solid transparent;
     transition: border-color 200ms linear;
     &::placeholder {
-        color: var(--color-zero);
+        color: var(--color-second);
         font-weight:bold;
     }
     &:focus,

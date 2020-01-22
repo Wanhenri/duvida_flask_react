@@ -51,15 +51,18 @@ const FetSomar = () => {
     />
   );
 
+//<Section style={{ flexDirection: "row" }}>
+//  {weather.map(w => (
+//    <Cards key={w.day}>
+//      <HeaderDays day={w.day} />
+//    </Cards>
+//  ))}
+//</Section>
+
+
   return (
     <Container>
-      <Section style={{ flexDirection: "row" }}>
-        {weather.map(w => (
-          <Cards key={w.day}>
-            <HeaderDays day={w.day} />
-          </Cards>
-        ))}
-      </Section>
+
       <Section style={{ flexDirection: "row" }}>
         {weather.map(w => (
           <Cards key={w.day} BackgroundColor={"#eaeaea"}>

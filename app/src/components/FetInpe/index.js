@@ -18,37 +18,37 @@ const FetInpe = () => {
       .catch(error => console.log(error));
   }, []);
 
-  const List = [
-    { cidade: "Santa Maria", uf: "SE" },
-    { cidade: "Val-de-Cans", uf: "PA" },
-    { cidade: "Pampulha", uf: "MG" },
-    { cidade: "Boa Vista", uf: "RR" },
-    { cidade: "Juscelino Kubitschek", uf: "DF" },
-    { cidade: "Internacional", uf: "MS" },
-    { cidade: "Marechal Rondon", uf: "MT" },
-    { cidade: "Afonso Pena", uf: "PR" },
-    { cidade: "Hercílio Luz", uf: "SC" },
-    { cidade: "Pinto Martins", uf: "CE" },
-    { cidade: "Santa Genoveva", uf: "GO" },
-    { cidade: "Pres. Castro Pinto", uf: "PB" },
-    { cidade: "Internacional", uf: "AP" },
-    { cidade: "Zumbi dos Palmares", uf: "AL" },
-    { cidade: "Ponta Pelada", uf: "AM" },
-    { cidade: "Augusto Severo", uf: "RN" },
-    { cidade: "Palmas", uf: "TO" },
-    { cidade: "Salgado Filho", uf: "RS" },
-    { cidade: "Gov. Jorge Teixeira de Oliveira", uf: "RO" },
-    { cidade: "Guararapes", uf: "PE" },
-    { cidade: "Presidente Médici", uf: "AC" },
-    { cidade: "Galeão", uf: "RJ" },
-    { cidade: "Dep. Luís Eduardo Magalhães", uf: "BA" },
-    { cidade: "Vitória da Conquista", uf: "BA" },
-    { cidade: "Mar. Cunha Machado", uf: "MA" },
-    { cidade: "Congonhas", uf: "SP" },
-    { cidade: "Sen. Petrônio Portella", uf: "PI" },
-    { cidade: "Eurico Aguiar Salles", uf: "ES" }
-  ];
-
+//  const List = [
+//    { cidade: "Santa Maria", uf: "SE" },
+//    { cidade: "Val-de-Cans", uf: "PA" },
+//    { cidade: "Pampulha", uf: "MG" },
+//    { cidade: "Boa Vista", uf: "RR" },
+//    { cidade: "Juscelino Kubitschek", uf: "DF" },
+//    { cidade: "Internacional", uf: "MS" },
+//    { cidade: "Marechal Rondon", uf: "MT" },
+//    { cidade: "Afonso Pena", uf: "PR" },
+//    { cidade: "Hercílio Luz", uf: "SC" },
+//    { cidade: "Pinto Martins", uf: "CE" },
+//    { cidade: "Santa Genoveva", uf: "GO" },
+//    { cidade: "Pres. Castro Pinto", uf: "PB" },
+//    { cidade: "Internacional", uf: "AP" },
+//    { cidade: "Zumbi dos Palmares", uf: "AL" },
+//    { cidade: "Ponta Pelada", uf: "AM" },
+//    { cidade: "Augusto Severo", uf: "RN" },
+//    { cidade: "Palmas", uf: "TO" },
+//    { cidade: "Salgado Filho", uf: "RS" },
+//    { cidade: "Gov. Jorge Teixeira de Oliveira", uf: "RO" },
+//    { cidade: "Guararapes", uf: "PE" },
+//    { cidade: "Presidente Médici", uf: "AC" },
+//    { cidade: "Galeão", uf: "RJ" },
+//    { cidade: "Dep. Luís Eduardo Magalhães", uf: "BA" },
+//    { cidade: "Vitória da Conquista", uf: "BA" },
+//    { cidade: "Mar. Cunha Machado", uf: "MA" },
+//    { cidade: "Congonhas", uf: "SP" },
+//    { cidade: "Sen. Petrônio Portella", uf: "PI" },
+//    { cidade: "Eurico Aguiar Salles", uf: "ES" }
+//  ];
+//
   const ColoredLine = ({ color }) => (
     <hr
       style={{

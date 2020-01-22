@@ -7,7 +7,7 @@ import TitleSomar from "../../components/TitleSomar";
 
 import SubtitleSomar from "../../objects/SubtitleSomar";
 
-import TimeSummary from "../../objects/TimeSummary";
+
 
 const HeaderSomar = () => (
   <Header>

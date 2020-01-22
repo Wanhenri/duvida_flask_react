@@ -4,14 +4,14 @@ const BtnSomarCidade = styled.button.attrs({
   type: "submit"
 })`
   position: absolute;
-  left: 0;
-  top: 38px;
+  left: 200px;
+  top: 0;
   box-sizing: border-box;
-  background-color: var(--color-zero);
+  background-color: var(--color-fourth);
   width: 140px;
-  height: 40px;
+  height: 38px;
   border-radius: var(--radius-small);
-  color: var(--color-first);
+  color: var(--color-zero);
   font-weight: bold;
   font-size: var(--size-small);
   cursor: pointer;
