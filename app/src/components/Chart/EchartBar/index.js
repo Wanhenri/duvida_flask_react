@@ -39,25 +39,23 @@ class EchartGraphBar extends Component {
             [49.7, 20134, "q"],
             [80.7, 20167, "r"],
             [81.7, 20145, "s"]
-
           ]
         },
         grid: { containLabel: true },
         xAxis: { name: "amount" },
         yAxis: { type: "category" },
         visualMap: {
-          orient: 'horizontal',
-          left: 'center',
+          orient: "horizontal",
+          left: "center",
           min: 0,
-          max: 30,
-          text: ['High Score', 'Low Score'],
+          max: 35,
+          text: ["High Score", "Low Score"],
           // Map the score column to color
           dimension: 0,
           inRange: {
-              color: [
-                '#D7DA8B', '#D7DA8B', '#D7DA8B','#F45577', '#F45577','blue', 'blue', 'green', 'green','white','#E15457']
+            color: ["green", "blue", "#D7DA8B", "#F45577", "#E15457"]
           }
-      },
+        },
         series: [
           {
             type: "bar",
@@ -87,7 +85,21 @@ class EchartGraphBar extends Component {
           source: this.props.source
         },
         xAxis: { name: this.props.source[0][0] },
-        yAxis: { name: this.props.source[0][1] }
+        yAxis: {
+          name: this.props.source[0][1],
+          axisLabel: {
+            interval: 0
+          }
+        },
+        series: [
+          {
+            type: "bar",
+            encode: {
+              x: this.props.source[0][0],
+              y: this.props.source[0][1]
+            }
+          }
+        ]
       });
       console.log(newOptions);
       this.echartsReactRef.getEchartsInstance().setOption(newOptions);
@@ -103,7 +115,7 @@ class EchartGraphBar extends Component {
       <Wrapper>
         <Section>
           <ReactEcharts
-            style={{ height: "50vh", width: "80vw", margin: "auto" }}
+            style={{ height: "40vh", width: "80vw", margin: "auto" }}
             ref={e => {
               this.echartsReactRef = e;
             }}

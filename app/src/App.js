@@ -8,6 +8,8 @@ import Base from "./styles/base";
 import Home from "./pages/Home";
 import Size from "./styles/settings/size";
 
+import "@fortawesome/fontawesome-svg-core/styles.css";
+
 // import ReactEcharts from "echarts-for-react";
 // import EchartGraphPie from "./components/EchartPie"
 

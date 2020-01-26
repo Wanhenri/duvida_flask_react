@@ -31,7 +31,6 @@ class SomarController:
         rel_humidity_daily_avg = str(
             temps_forecast['rel_humidity_daily_avg'][index])
 
-       
         max_temperature = str(temps_observed['max_temperature'][index])
         min_temperature = str(temps_observed['min_temperature'][index])
         max_rel_humidity = str(temps_observed['max_rel_humidity'][index])

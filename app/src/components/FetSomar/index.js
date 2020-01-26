@@ -6,7 +6,17 @@ import moment from "moment";
 
 import fontawesome from "@fortawesome/fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare, faCoffee } from "@fortawesome/fontawesome-free-solid";
+import {
+  faSun,
+  faCloud,
+  faCloudRain,
+  faCloudSun,
+  faCloudSunRain,
+  faCloudShowersHeavy,
+  faCloudMeatball,
+  faCaretDown,
+  faCaretUp
+} from "@fortawesome/free-solid-svg-icons";
 
 import "moment/locale/pt-br";
 import HeaderDays from "../HeaderDay";
@@ -51,18 +61,18 @@ const FetSomar = () => {
     />
   );
 
-//<Section style={{ flexDirection: "row" }}>
-//  {weather.map(w => (
-//    <Cards key={w.day}>
-//      <HeaderDays day={w.day} />
-//    </Cards>
-//  ))}
-//</Section>
-
+  const icons = {
+    CC: <FontAwesomeIcon size={"2x"} icon={faSun} />,
+    PN: <FontAwesomeIcon size={"2x"} icon={faCloudSun} />,
+    PI: <FontAwesomeIcon size={"2x"} icon={faCloudSunRain} />,
+    EN: <FontAwesomeIcon size={"2x"} icon={faCloud} />,
+    NC: <FontAwesomeIcon size={"2x"} icon={faCloudRain} />,
+    PC: <FontAwesomeIcon size={"2x"} icon={faCloudShowersHeavy} />,
+    NB: <FontAwesomeIcon size={"2x"} icon={faCloudMeatball} />
+  };
 
   return (
     <Container>
-
       <Section style={{ flexDirection: "row" }}>
         {weather.map(w => (
           <Cards key={w.day} BackgroundColor={"#eaeaea"}>
@@ -75,7 +85,7 @@ const FetSomar = () => {
             <b>{moment(w.day).format("DD/MM/YYYY")}</b>
             <p>{w.city}</p>
             <br />
-            <p>{w.metaWeather}</p>
+            <p>{icons[w.metaWeather]}</p>
           </Cards>
         ))}
       </Section>
@@ -88,7 +98,7 @@ const FetSomar = () => {
             <b></b>
             <p>
               <FontAwesomeIcon
-                icon="caret-up"
+                icon={faCaretUp}
                 fixedWidth
                 color="red"
                 size="2x"
@@ -100,7 +110,7 @@ const FetSomar = () => {
             </p>
             <p>
               <FontAwesomeIcon
-                icon="caret-down"
+                icon={faCaretDown}
                 fixedWidth
                 color="blue"
                 size="2x"
@@ -124,7 +134,7 @@ const FetSomar = () => {
             <b></b>
             <p>
               <FontAwesomeIcon
-                icon="caret-up"
+                icon={faCaretUp}
                 fixedWidth
                 color="red"
                 size="2x"
@@ -136,7 +146,7 @@ const FetSomar = () => {
             </p>
             <p>
               <FontAwesomeIcon
-                icon="caret-down"
+                icon={faCaretDown}
                 fixedWidth
                 color="blue"
                 size="2x"

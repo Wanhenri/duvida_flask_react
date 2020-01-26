@@ -34,11 +34,6 @@ def get_weather(cidade, diasprevisao):
 
     weather_reports = []
 
-    if(isinstance(diasprevisao, str)):
-        intervalo = int(diasprevisao)
-    else:
-        intervalo = diasprevisao
-
     ezw = SomarController()
 
     for diasprevisao_out in range(0, intervalo):

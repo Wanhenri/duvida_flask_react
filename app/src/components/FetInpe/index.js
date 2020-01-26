@@ -18,37 +18,37 @@ const FetInpe = () => {
       .catch(error => console.log(error));
   }, []);
 
-//  const List = [
-//    { cidade: "Santa Maria", uf: "SE" },
-//    { cidade: "Val-de-Cans", uf: "PA" },
-//    { cidade: "Pampulha", uf: "MG" },
-//    { cidade: "Boa Vista", uf: "RR" },
-//    { cidade: "Juscelino Kubitschek", uf: "DF" },
-//    { cidade: "Internacional", uf: "MS" },
-//    { cidade: "Marechal Rondon", uf: "MT" },
-//    { cidade: "Afonso Pena", uf: "PR" },
-//    { cidade: "Hercílio Luz", uf: "SC" },
-//    { cidade: "Pinto Martins", uf: "CE" },
-//    { cidade: "Santa Genoveva", uf: "GO" },
-//    { cidade: "Pres. Castro Pinto", uf: "PB" },
-//    { cidade: "Internacional", uf: "AP" },
-//    { cidade: "Zumbi dos Palmares", uf: "AL" },
-//    { cidade: "Ponta Pelada", uf: "AM" },
-//    { cidade: "Augusto Severo", uf: "RN" },
-//    { cidade: "Palmas", uf: "TO" },
-//    { cidade: "Salgado Filho", uf: "RS" },
-//    { cidade: "Gov. Jorge Teixeira de Oliveira", uf: "RO" },
-//    { cidade: "Guararapes", uf: "PE" },
-//    { cidade: "Presidente Médici", uf: "AC" },
-//    { cidade: "Galeão", uf: "RJ" },
-//    { cidade: "Dep. Luís Eduardo Magalhães", uf: "BA" },
-//    { cidade: "Vitória da Conquista", uf: "BA" },
-//    { cidade: "Mar. Cunha Machado", uf: "MA" },
-//    { cidade: "Congonhas", uf: "SP" },
-//    { cidade: "Sen. Petrônio Portella", uf: "PI" },
-//    { cidade: "Eurico Aguiar Salles", uf: "ES" }
-//  ];
-//
+  const cityNames = {
+    SBAR: { cidade: "Santa Maria", uf: "SE" },
+    SBBE: { cidade: "Val-de-Cans", uf: "PA" },
+    SBBH: { cidade: "Pampulha", uf: "MG" },
+    SBBV: { cidade: "Boa Vista", uf: "RR" },
+    SBBR: { cidade: "Juscelino Kubitschek", uf: "DF" },
+    SBCG: { cidade: "Internacional", uf: "MS" },
+    SBCY: { cidade: "Marechal Rondon", uf: "MT" },
+    SBCT: { cidade: "Afonso Pena", uf: "PR" },
+    SBFL: { cidade: "Hercílio Luz", uf: "SC" },
+    SBFZ: { cidade: "Pinto Martins", uf: "CE" },
+    SBGO: { cidade: "Santa Genoveva", uf: "GO" },
+    SBJP: { cidade: "Pres. Castro Pinto", uf: "PB" },
+    SBMQ: { cidade: "Internacional", uf: "AP" },
+    SBMO: { cidade: "Zumbi dos Palmares", uf: "AL" },
+    SBMN: { cidade: "Ponta Pelada", uf: "AM" },
+    SBNT: { cidade: "Augusto Severo", uf: "RN" },
+    SBPJ: { cidade: "Palmas", uf: "TO" },
+    SBPA: { cidade: "Salgado Filho", uf: "RS" },
+    SBPV: { cidade: "Gov. Jorge Teixeira de Oliveira", uf: "RO" },
+    SBRF: { cidade: "Guararapes", uf: "PE" },
+    SBRB: { cidade: "Presidente Médici", uf: "AC" },
+    SBGL: { cidade: "Galeão", uf: "RJ" },
+    SBSV: { cidade: "Dep. Luís Eduardo Magalhães", uf: "BA" },
+    SBSL: { cidade: "Vitória da Conquista", uf: "BA" },
+    SBSP: { cidade: "Mar. Cunha Machado", uf: "MA" },
+    SBTE: { cidade: "Congonhas", uf: "SP" },
+    SBVT: { cidade: "Sen. Petrônio Portella", uf: "PI" }
+  };
+  //
+
   const ColoredLine = ({ color }) => (
     <hr
       style={{
@@ -130,7 +130,7 @@ const FetInpe = () => {
             ["Temperatura", "Capital"],
             ...weather
               .sort((a, b) => a.temperatura - b.temperatura)
-              .map(w => [w.temperatura, w.codigo])
+              .map(w => [w.temperatura, cityNames[w.codigo].cidade])
           ]}
         />
       </Section>
