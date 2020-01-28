@@ -12,6 +12,7 @@ import {
   faCloudRain,
   faCloudSun,
   faCloudSunRain,
+  faCloundShowers,
   faCloudShowersHeavy,
   faCloudMeatball,
   faCaretDown,
@@ -41,7 +42,7 @@ const FetSomar = () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        cidade: "RiodeJaneiro-RJ",
+        cidade: "CachoeiraPaulista-SP",
         diasprevisao: "7"
       })
     })
@@ -68,7 +69,9 @@ const FetSomar = () => {
     EN: <FontAwesomeIcon size={"2x"} icon={faCloud} />,
     NC: <FontAwesomeIcon size={"2x"} icon={faCloudRain} />,
     PC: <FontAwesomeIcon size={"2x"} icon={faCloudShowersHeavy} />,
-    NB: <FontAwesomeIcon size={"2x"} icon={faCloudMeatball} />
+    NB: <FontAwesomeIcon size={"2x"} icon={faCloudMeatball} />,
+    CH: <FontAwesomeIcon size={"2x"} icon={faCloudShowersHeavy} />
+    
   };
 
   return (
@@ -225,8 +228,8 @@ const FetSomar = () => {
               }
             },
             {
-              name: "Observed Max temperature",
-              data: weather.map(w => w.max_temperature)
+              name: "Forecast Min temperature",
+              data: weather.map(w => w.temperature_daily_min)
             }
           ]}
           smooth={true}
@@ -269,15 +272,30 @@ const FetSomar = () => {
           }}
           series={[
             {
-              name: "Relativy Humidity daily average Forecast",
-              data: weather.map(w => w.rel_humidity_daily_avg)
-            },
-            {
               name: "Relativy Humidity daily average Observer",
               data: weather.map(w => w.mean_rel_humidity)
             }
           ]}
-          textTile={"Relativy Humidity daily average"}
+          textTile={"Relativy Humidity daily average Observer"}
+          smooth={true}
+          limit={10}
+        />
+          <EchartGraph
+          xAxis={{
+            type: "category",
+            data: weather.map(w =>
+              moment(w.day)
+                .locale("pt-br")
+                .format("dddd")
+            )
+          }}
+          series={[
+            {
+              name: "Relativy Humidity daily average Forecast",
+              data: weather.map(w => w.rel_humidity_daily_avg)
+            }
+          ]}
+          textTile={"Relativy Humidity daily average Forecast"}
           smooth={true}
           limit={10}
         />
