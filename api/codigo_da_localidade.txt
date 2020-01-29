@@ -1,3 +1,27 @@
+Aracaju 220 
+Belém 221 
+Belo Horizonte 222 
+Boa Vista 223 
+Brasília 224 
+Campo Grande 225 
+Cuiabá 226 
+Curitiba 227 
+Florianópolis 228 
+Fortaleza 229 
+Goiânia 230 
+João Pessoa 231 
+Macapá 232 
+Maceió 233 
+Manaus 234 
+Natal 235 
+Palmas 236 
+Porto Alegre 237 
+Porto Velho 238 
+Recife 239 
+Rio Branco 240 
+Rio de Janeiro 241 
+Salvador 242 
+São Luís 243 
 São Paulo 244 
 Teresina 245 
 Vitória 246 
