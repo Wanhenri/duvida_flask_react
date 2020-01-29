@@ -191,24 +191,24 @@ const FetSomar = () => {
             {
               name: "Max temperature",
               type: "bar",
-              data: weather.map(w => parseFloat(w.max_temperature)),
+              data: weather.map(w => parseFloat(w.temperature_daily_max)),
               yAxisIndex: 0
             },
             {
               name: "Min temperature",
               type: "bar",
-              data: weather.map(w => parseFloat(w.min_temperature)),
+              data: weather.map(w => parseFloat(w.temperature_daily_min)),
               yAxisIndex: 1
             },
             {
-              name: "Relative Humidity Daily Average - Observer",
+              name: "Relative Humidity Daily Average",
               type: "line",
-              data: weather.map(w => parseFloat(w.mean_rel_humidity)),
+              data: weather.map(w => parseFloat(w.rel_humidity_daily_avg)),
               yAxisIndex: 2
             }
           ]}
           smooth={true}
-          textTile={"Visao Geral"}
+          textTile={"Forecast - Visao Geral"}
           limit={5}
         />
         <EchartGraph
