@@ -133,6 +133,7 @@ const FetSomar = () => {
             </p>
             <br />
             {/* Trecho relacionado aos dados OBSERVER*/}
+            {/*TESTE*/}
             {/* Analisando o que farei com eles*/}
             {/*
             <b>OBSERVER</b>
