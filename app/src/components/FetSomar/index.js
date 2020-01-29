@@ -76,7 +76,7 @@ const FetSomar = () => {
 
   return (
     <Container>
-      <Section style={{ flexDirection: "row" }}>
+      <Section style={{ flexDirection: "row" } }>
         {weather.map(w => (
           <Cards key={w.day} BackgroundColor={"#eaeaea"}>
             <b>
@@ -94,7 +94,7 @@ const FetSomar = () => {
       </Section>
       <Section style={{ flexDirection: "row" }}>
         {weather.map(w => (
-          <Cards key={w.day} BackgroundColor={"#ffff"}>
+          <Cards key={w.day} BackgroundColor={"#ffff"} style={{padding: "0 60px 60px 60px"}}>
             <b>FORECAST</b>
             <br />
             <p></p>
@@ -132,6 +132,9 @@ const FetSomar = () => {
               />
             </p>
             <br />
+            {/* Trecho relacionado aos dados OBSERVER*/}
+            {/* Analisando o que farei com eles*/}
+            {/*
             <b>OBSERVER</b>
             <br />
             <b></b>
@@ -166,6 +169,7 @@ const FetSomar = () => {
                 secondaryColor="#f0f0f0"
               />
             </p>
+            */}
           </Cards>
         ))}
       </Section>
@@ -206,7 +210,6 @@ const FetSomar = () => {
           textTile={"Visao Geral"}
           limit={5}
         />
-
         <EchartGraph
           xAxis={{
             type: "category",
