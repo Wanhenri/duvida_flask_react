@@ -41,11 +41,8 @@ def get_weather_TQ0666(Start, Before):
     return json_res_forecast
     
   return json_res_forecast
-  #print(json.dumps(json_res_forecast, indent=2, sort_keys=True))
 
 class Inpe_TQ0666(Resource):
     def get(self):
         reports = get_weather_TQ0666(Start,Before)
         return reports
-        #print(reports)
-        #print(json.dumps(reports, indent=2, sort_keys=True))
