@@ -1,4 +1,5 @@
 import requests
+from flask import request
 import json
 from datetime import date, timedelta
 import datetime
@@ -18,15 +19,16 @@ Before = BeforeDate.strftime("%Y/%m/%d/") + hh #formatação padrao para a leitu
 
 
 class definirLink:
-    def __init__(self, dateJson):
+    def __init__(self, dateJson, codigoDaLocalidade):
       self.dateJson = dateJson
+      self.codigoDaLocalidade = codigoDaLocalidade
         
     def Link(self):
-      return "http://ftp.cptec.inpe.br/modelos/tempo/BAM/TQ0666L064/recortes/grh/json/"+ str(self.dateJson) +"/220.json"  
+      return "http://ftp.cptec.inpe.br/modelos/tempo/BAM/TQ0666L064/recortes/grh/json/"+ str(self.dateJson) +"/"+ str(self.codigoDaLocalidade)+".json"  
 
-def get_weather_TQ0666(Start, Before):
-  cclasStart = definirLink(Start)
-  cclasBefore = definirLink(Before)
+def get_weather_TQ0666(Start, Before, codigoDaLocalidade):
+  cclasStart = definirLink(Start,codigoDaLocalidade)
+  cclasBefore = definirLink(Before, codigoDaLocalidade)
 
   url=cclasStart.Link()
   response_forecast = requests.get(url)
@@ -44,5 +46,13 @@ def get_weather_TQ0666(Start, Before):
 
 class Inpe_TQ0666(Resource):
     def get(self):
-        reports = get_weather_TQ0666(Start,Before)
+        return {
+            'status': 200,
+            'response': "Funciona"
+        }
+
+    def post(self):
+        json_data = request.get_json()
+        codigoDaLocalidade = json_data['codigoDaLocalidade']
+        reports = get_weather_TQ0666(Start,Before,codigoDaLocalidade)
         return reports
