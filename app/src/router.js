@@ -20,6 +20,8 @@ export default function Router() {
     }
   ];
   return (
+    // exemplo da rota sem o spread operator(...):
+    // <Route key={route.name} name={route.name} path={route.path} exact={route.exact} component={route.component}></Route>
     <BrowserRouter>
       <Switch>
         {routes.map(route => (
