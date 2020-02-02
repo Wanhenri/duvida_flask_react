@@ -8,9 +8,8 @@ export const Header = styled.nav`
   width: 100vw;
   height: 120px;
   position: sticky;
+  top: 0;
   display: flex;
-  align-items: left;
-  justify-content: left;
   & > ${LogoAvatar} {
     position: absolute;
     top: 15px;

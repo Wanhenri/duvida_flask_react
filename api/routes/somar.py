@@ -40,7 +40,8 @@ def get_weather(cidade, diasprevisao):
         diasdeprevisao = str(date.today() + timedelta(diasprevisao_out))
         json_report = ezw.get_weather(
             diasdeprevisao, json_res_forecast, json_res_observer)
-        weather_reports.append(json_report)
+        if(json_report):
+            weather_reports.append(json_report)
 
     return weather_reports
 

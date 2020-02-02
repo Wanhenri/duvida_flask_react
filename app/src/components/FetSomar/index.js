@@ -12,7 +12,7 @@ import {
   faCloudRain,
   faCloudSun,
   faCloudSunRain,
-  faCloundShowers,
+  faCloudShowers,
   faCloudShowersHeavy,
   faCloudMeatball,
   faCaretDown,
@@ -62,6 +62,10 @@ const FetSomar = () => {
     />
   );
 
+  useEffect(() => {
+    console.log(weather);
+  }, [weather]);
+
   const icons = {
     CC: <FontAwesomeIcon size={"2x"} icon={faSun} />,
     PN: <FontAwesomeIcon size={"2x"} icon={faCloudSun} />,
@@ -71,12 +75,11 @@ const FetSomar = () => {
     PC: <FontAwesomeIcon size={"2x"} icon={faCloudShowersHeavy} />,
     NB: <FontAwesomeIcon size={"2x"} icon={faCloudMeatball} />,
     CH: <FontAwesomeIcon size={"2x"} icon={faCloudShowersHeavy} />
-    
   };
 
-  return (
+  return weather.length > 0 ? (
     <Container>
-      <Section style={{ flexDirection: "row" } }>
+      <Section style={{ flexDirection: "row" }}>
         {weather.map(w => (
           <Cards key={w.day} BackgroundColor={"#eaeaea"}>
             <b>
@@ -94,7 +97,11 @@ const FetSomar = () => {
       </Section>
       <Section style={{ flexDirection: "row" }}>
         {weather.map(w => (
-          <Cards key={w.day} BackgroundColor={"#ffff"} style={{padding: "0 60px 60px 60px"}}>
+          <Cards
+            key={w.day}
+            BackgroundColor={"#ffff"}
+            style={{ padding: "0 60px 60px 60px" }}
+          >
             <b>FORECAST</b>
             <br />
             <p></p>
@@ -284,7 +291,7 @@ const FetSomar = () => {
           smooth={true}
           limit={10}
         />
-          <EchartGraph
+        <EchartGraph
           xAxis={{
             type: "category",
             data: weather.map(w =>
@@ -304,12 +311,14 @@ const FetSomar = () => {
           limit={10}
         />
       </Section>
-      <Section>
-        <Fragment style={styles}>
+      <Section style={styles}>
+        <Fragment>
           <FontAwesomeIcon className="align-middle redFont" icon="caret-up" />
         </Fragment>
       </Section>
     </Container>
+  ) : (
+    <></>
   );
 };
 

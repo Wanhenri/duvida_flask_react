@@ -5,13 +5,12 @@ import Spacing from "./styles/settings/spacing";
 import Reset from "./styles/generic/reset";
 import Base from "./styles/base";
 
-import Home from "./pages/Home";
 import Size from "./styles/settings/size";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import Router from "./router";
 
-// import ReactEcharts from "echarts-for-react";
-// import EchartGraphPie from "./components/EchartPie"
+import HeaderSomar from "./components/HeaderSomar";
 
 const App = () => (
   <Fragment>
@@ -20,7 +19,8 @@ const App = () => (
     <Spacing />
     <Reset />
     <Base />
-    <Home />
+    <HeaderSomar />
+    <Router />
   </Fragment>
 );
 
