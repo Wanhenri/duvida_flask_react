@@ -8,5 +8,6 @@ export const Form = styled.form`
 
     &> ${InputSomar}{
                 
-    }
+    };
+    z-index: -1;
 `;

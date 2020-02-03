@@ -32,5 +32,6 @@ export const Section = styled.section`
   flex-wrap: wrap;
   * {
     flex: 1 1 0;
-  }
+  };
+  z-index: -1;
 `;

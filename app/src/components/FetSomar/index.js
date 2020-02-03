@@ -77,7 +77,7 @@ const FetSomar = () => {
     CH: <FontAwesomeIcon size={"2x"} icon={faCloudShowersHeavy} />
   };
 
-  return weather.length > 0 ? (
+  return (
     <Container>
       <Section style={{ flexDirection: "row" }}>
         {weather.map(w => (
@@ -317,8 +317,6 @@ const FetSomar = () => {
         </Fragment>
       </Section>
     </Container>
-  ) : (
-    <></>
   );
 };
 
