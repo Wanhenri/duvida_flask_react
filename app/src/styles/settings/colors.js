@@ -10,6 +10,9 @@ const Colors = createGlobalStyle`
         --color-second: #191637;
         --color-third: #EAE6DA;
         --color-fourth: rgb(255, 200, 0);
+        --color-fifth: #0075b4;
+        --color-sixth: #0e4097;
+        --color-seventh: #f8931d;
     }
 `
 

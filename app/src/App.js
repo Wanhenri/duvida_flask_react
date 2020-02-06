@@ -19,7 +19,7 @@ const App = () => (
     <Spacing />
     <Reset />
     <Base />
-    <HeaderSomar />
+    
     <Router />
   </Fragment>
 );

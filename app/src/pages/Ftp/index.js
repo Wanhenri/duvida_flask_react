@@ -5,6 +5,8 @@ import Eta5km from "../../components/Forecast/Eta5km"
 import Satelite from "../../components/Observer/Satelite"
 import moment from "moment";
 
+import HeaderInpe from "../../components/HeaderInpe";
+
 const dateNow =  moment().format("YYYYMMDD")
 const dateY1 =  moment().subtract(1, "days").format("YYYYMMDD")
 const dateY2 =  moment().subtract(2, "days").format("YYYYMMDD")
@@ -14,6 +16,9 @@ const dateY5 =  moment().subtract(5, "days").format("YYYYMMDD")
 
 const  FTP = () => (
   <Wrapper>
+    <Section>
+      <HeaderInpe />
+    </Section>
       <Section>
       <Satelite height="684" title="Satellite image" />
     </Section>
