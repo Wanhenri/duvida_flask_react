@@ -1,7 +1,6 @@
-import { createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-
-const Size = createGlobalStyle `
+const Size = createGlobalStyle`
     :root {
         --radius-small: 4px;
         --size-base:10px;

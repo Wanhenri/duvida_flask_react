@@ -41,5 +41,4 @@ export const Section = styled.section`
   margin: auto auto;
   display: flex;
   padding-top: 40px;
-  z-index: -1;
 `;

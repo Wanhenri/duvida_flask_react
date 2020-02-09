@@ -85,7 +85,10 @@ const FetInpe = () => {
               center: ["50%", "50%"],
               data: weather
                 .map(w => {
-                  return { name: cityNames[w.codigo].cidade, value: w.temperatura };
+                  return {
+                    name: cityNames[w.codigo].cidade,
+                    value: w.temperatura
+                  };
                 })
                 .sort(function(a, b) {
                   return a.value - b.value;

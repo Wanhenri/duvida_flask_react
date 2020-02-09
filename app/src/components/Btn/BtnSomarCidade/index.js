@@ -3,13 +3,12 @@ import styled from "styled-components";
 const BtnSomarCidade = styled.button.attrs({
   type: "submit"
 })`
-  position: absolute;
-  left: 200px;
-  top: 0;
   box-sizing: border-box;
   background-color: var(--color-fourth);
   width: 140px;
   height: 38px;
+  margin: auto 0px;
+  margin-left: 10px;
   border-radius: var(--radius-small);
   color: var(--color-zero);
   font-weight: bold;

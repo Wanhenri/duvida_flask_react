@@ -4,21 +4,27 @@ import { Form } from "./styles";
 import InputSomar from "../../objects/InputSomar";
 import BtnSomarCidade from "../Btn/BtnSomarCidade";
 
-const FormLead = () => {
+const FormLead = props => {
   const [loading, setLoading] = useState(false);
-  const [content, setContent] = useState("Buscar");
+  const [search, setSearch] = useState("");
 
   return (
     <Form>
-      <InputSomar placeholder="Cidade desejada" />
+      <InputSomar
+        placeholder="Cidade desejada"
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+      />
       <BtnSomarCidade
         onClick={event => {
           event.preventDefault();
           setLoading(true);
-          setContent("Enviando..");
+          props.onSubmit(search, () => {
+            setLoading(false);
+          });
         }}
       >
-        {content}
+        {loading ? "Buscando..." : "Buscar"}
       </BtnSomarCidade>
     </Form>
   );

@@ -23,6 +23,7 @@ import "moment/locale/pt-br";
 
 import { CircleProgress } from "react-gradient-progress";
 import EchartGraphBarHorizontal from "../Chart/EchartBarHorizontal";
+import FormLead from "../FormLead";
 
 fontawesome.library.add();
 
@@ -38,20 +39,28 @@ const FetSomar = () => {
     observed_period: [],
     forecast_period: []
   });
-  useEffect(() => {
-    fetch("http://localhost:5000/somar", {
+
+  const buscaPrevisao = async (cidade, done) => {
+    await fetch("http://localhost:5000/somar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        cidade: "CachoeiraPaulista-SP",
+        cidade,
         diasprevisao: "7"
       })
     })
       .then(response => response.json())
-      .then(data => setWeather(data))
+      .then(data => {
+        setWeather(data);
+        done();
+      })
       .catch(error => console.log(error));
+  };
+
+  useEffect(() => {
+    buscaPrevisao("CachoeiraPaulista-SP", () => {});
   }, []);
 
   const ColoredLine = ({ color }) => (
@@ -82,6 +91,9 @@ const FetSomar = () => {
 
   return (
     <Container>
+      <Section>
+        <FormLead onSubmit={buscaPrevisao} />
+      </Section>
       <Section style={{ flexDirection: "row" }}>
         {weather.data.map(w => (
           <Cards key={w.day} BackgroundColor={"#eaeaea"}>
@@ -94,7 +106,7 @@ const FetSomar = () => {
             <b>{moment(w.day).format("DD/MM/YYYY")}</b>
             <p>{w.city}</p>
             <br />
-            <p>{icons[w.metaweather]}</p>
+            <p>{icons[w.metaWeather]}</p>
           </Cards>
         ))}
       </Section>
