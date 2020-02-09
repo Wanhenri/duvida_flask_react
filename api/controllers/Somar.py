@@ -21,7 +21,6 @@ class SomarController:
         configWeather = data['meta']['units']
 
         day = str(date)
-        day_obs = data['periods']
         city = config['ref']
         lat = config['latitude']
         lon = config['longitude']
@@ -54,7 +53,7 @@ class SomarController:
         metaWeather = str(
             configWeather['weather'][index])
 
-        weather_report = WeatherReport(day, day_obs, city, lat, lon,
+        weather_report = WeatherReport(day, city, lat, lon,
                                        temperature_daily_min, temperature_daily_max,
                                        rel_humidity_daily_avg,
                                        max_temperature, min_temperature,

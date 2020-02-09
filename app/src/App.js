@@ -10,8 +10,6 @@ import Size from "./styles/settings/size";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Router from "./router";
 
-import HeaderSomar from "./components/HeaderSomar";
-
 const App = () => (
   <Fragment>
     <Colors />
@@ -19,7 +17,6 @@ const App = () => (
     <Spacing />
     <Reset />
     <Base />
-    
     <Router />
   </Fragment>
 );

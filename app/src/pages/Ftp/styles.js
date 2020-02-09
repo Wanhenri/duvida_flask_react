@@ -7,6 +7,7 @@ export const Section = styled.section`
 `;
 
 export const Wrapper = styled.main`
+  margin: 20px;
   color: white;
   justify-content: center;
   align-items: center;

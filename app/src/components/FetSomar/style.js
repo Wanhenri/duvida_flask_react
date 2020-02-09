@@ -31,10 +31,10 @@ export const Container = styled.section`
 // #eaeaea
 // não funciona ainda
 export const ColoredLine = styled.hr`
-    color: ${props => props.color},
-    background-color: ${props => props.color},
-    height: 2px,
-    width: 100px
+  color: ${props => props.color};
+  background-color: ${props => props.color};
+  height: 2px;
+  width: 100px;
 `;
 
 export const Section = styled.section`

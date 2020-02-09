@@ -43,7 +43,7 @@ def get_weather(cidade, diasprevisao):
         if(json_report):
             weather_reports.append(json_report)
 
-    return weather_reports
+    return {"forecast_period": json_res_forecast["periods"], "observed_period": json_res_observer["periods"], "data": weather_reports}
 
 
 class Somar(Resource):
