@@ -16,8 +16,8 @@ def get_weather(cidade, diasprevisao):
     else:
         intervalo = diasprevisao
 
-    response_forecast = requests.get("{}{}days?city={}&reference=Somar".format(
-        api_url_forecast, diasprevisao, cidade), headers={'x-api-key': api_token})
+    response_forecast = requests.get("{api}{days}days?city={city}&reference=Somar".format(
+        api=api_url_forecast, days=diasprevisao, city=cidade), headers={'x-api-key': api_token})
     json_res_forecast = response_forecast.json()
 
     initial = datetime.today()
