@@ -14,6 +14,10 @@ de maneira acessível.
 ├── routes
 │   ├── somar.py
 │   └── teste.py
+    └── inpe.py
+    └── inmet.py
+    └── inpe_TQ0666.py
+    └── wrf_ams05km.py
 ├── schema
 │   └── weather.py
 └── controllers
