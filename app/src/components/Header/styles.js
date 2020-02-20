@@ -13,6 +13,11 @@ const routeStyle = {
     color: "var(--color-seventh)",
     background: "var(--color-sixth)",
     logo: logoInpe
+  },
+  "/ESA": {
+    color: "var(--color-seventh)",
+    background: "var(--color-sixth)",
+    logo: logoInpe
   }
 };
 
