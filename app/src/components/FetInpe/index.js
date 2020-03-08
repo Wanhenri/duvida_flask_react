@@ -14,7 +14,7 @@ const FetInpe = () => {
       }
     })
       .then(response => response.json())
-      .then(data => setWeather(data))
+      .then(data => setWeather(data.filter(a => a.codigo !== "SBPJ")))
       .catch(error => console.log(error));
   }, []);
 
@@ -58,6 +58,10 @@ const FetInpe = () => {
       }}
     />
   );
+
+  useEffect(() => {
+    console.log(weather)
+  },[weather])
 
   return (
     <Container>

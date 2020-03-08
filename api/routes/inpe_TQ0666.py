@@ -1,5 +1,5 @@
 import requests
-from flask import request
+from flask import request, Response
 import json
 from datetime import datetime, timedelta
 from flask_restful import Resource
@@ -24,12 +24,10 @@ def get_weather_TQ0666(Start, Before, codigoDaLocalidade):
         url = cclasStart.Link()
         response_forecast = requests.get(url)
         json_res_forecast = response_forecast.json()
-        print("Start OK")
     except:
         url = cclasBefore.Link()
         response_forecast = requests.get(url)
         json_res_forecast = response_forecast.json()
-        print("Before OK")
 
     return json_res_forecast
 
@@ -37,13 +35,17 @@ def get_weather_TQ0666(Start, Before, codigoDaLocalidade):
 class Inpe_TQ0666(Resource):
     def get(self):
         date = request.args.get("date")
-        print(date)
+        if(not date):
+            return Response("Missing parameter date",status=400)
+        codigoDaLocalidade = request.args.get("codigoDaLocalidade")
+        if(not codigoDaLocalidade):
+            return Response("Missing parameter codigoDaLocalidade",status=400)
+
         # Dia inicial
         StartDate = datetime.strptime(date, "%Y-%m-%d").strftime(
             "%Y/%m/%d/00") if date != None else datetime.today().strftime("%Y/%m/%d/00")
         # Caso o dia inicial não exista, ele continua lendo o dia anterior
         BeforeDate = (datetime.today() - timedelta(days=1)
                       ).strftime("%Y/%m/%d/00")
-        codigoDaLocalidade = request.args.get('codigoDaLocalidade')
         reports = get_weather_TQ0666(StartDate, BeforeDate, codigoDaLocalidade)
         return reports["datasets"][0]
