@@ -325,6 +325,40 @@ const FetSomar = () => {
           smooth={true}
           limit={10}
         />
+        <EchartGraph
+          xAxis={{
+            type: "category",
+            data: weather.forecast_period.map(w =>
+              moment(w)
+                .locale("pt-br")
+                .format("dddd")
+            )
+          }}
+          series={[
+            {
+              name: "Precipitation Daily acu",
+              data: weather.data.map(w => w.precipitation_daily_acu),
+              lineStyle: {
+                normal: {
+                  type: "dashed",
+                  width: 1
+                }
+              }
+            },
+            {
+              name: "Precipitation Daily max",
+              data: weather.data.map(w => w.precipitation_daily_max)
+            },
+            {
+              name: "Precipitation Daily min",
+              data: weather.data.map(w => w.precipitation_daily_min)
+            }
+          ]}
+          smooth={true}
+          type={"line"}
+          textTile={"Precipitation"}
+          limit={5}
+        />
       </Section>
       <Section style={styles}>
         <Fragment>
