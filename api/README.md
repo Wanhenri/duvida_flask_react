@@ -43,6 +43,7 @@ Para rodar a API, ative o ambiente virtual, com o comando abaixo:
 
 ```bash
 $ pipenv shell
+```
 
 E então, execute o servidor com o seguinte comando:
 
