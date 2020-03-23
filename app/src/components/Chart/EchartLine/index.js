@@ -15,10 +15,9 @@ class EchartGraph extends Component {
         },
         legend: {
           show: true,
-          orient: "horizontal",
+          orient: "vertical",
           left: "left",
-          padding: 30,
-          data: ["蒸发量", "降水量", "平均温度", "平均温度"]
+          data: [{ name: "Forecast" }, { name: "Observer" }]
         },
         xAxis: {
           type: "category",

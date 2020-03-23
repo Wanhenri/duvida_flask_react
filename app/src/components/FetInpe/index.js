@@ -7,7 +7,7 @@ import EchartGraphBar from "../Chart/EchartBar";
 const FetInpe = () => {
   const [weather, setWeather] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/inpe", {
+    fetch(`${process.env.REACT_APP_API_URL}/inpe`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

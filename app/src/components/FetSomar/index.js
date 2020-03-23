@@ -41,7 +41,7 @@ const FetSomar = () => {
   });
 
   const buscaPrevisao = async (cidade, done) => {
-    await fetch("http://localhost:5000/somar", {
+    await fetch(`${process.env.REACT_APP_API_URL}/somar`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
