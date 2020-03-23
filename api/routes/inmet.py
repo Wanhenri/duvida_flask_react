@@ -3,7 +3,6 @@ import json
 from flask import request
 from flask_restful import Resource
 from datetime import datetime
-import datetime
 
 
 def parseData(r):
@@ -30,13 +29,10 @@ def parseData(r):
 
 
 def get_inmet(date):
-    print("teste",date)
-    date = datetime.datetime.strptime(date, "%Y%m%d")
-    print("teste",date)
+    date = datetime.strptime(date, "%Y-%m-%d")
     result = dict()
     for hour in range(0, 23):
         date = date.replace(hour=hour)
-        print(date)
         url = "http://tempook.com.br/DATABASE/UND_inmet_{}".format(
             date.strftime("%Y%m%d%H00.txt"))
         try:
@@ -53,11 +49,11 @@ class Inmet(Resource):
     def get(self):
         #date = request.args.get("date")
         date = "20200228"
-        print("get",date)
+        print("get", date)
         return get_inmet(date)
 
-    #def post(self):
-    #    json_data = request.get_json()
-    #    date = json_data['date']
-    #    inmet__reports = get_inmet(date)
-    #    return inmet__reports
+        # def post(self):
+        #    json_data = request.get_json()
+        #    date = json_data['date']
+        #    inmet__reports = get_inmet(date)
+        #    return inmet__reports
