@@ -39,13 +39,38 @@
 ├── server.py
 <br />
 └── settings.py
+└── controllers
+    └── Somar.py
+```
+
+### Instalação
+
+Para instalar os pacotes utilizados pela API execute o comando abaixo:
+
+```bash
+$ pipenv install
+```
+
+### Execução
+
+Para executar é necessário ativar o ambiente de desenvolvimento:
+
+```bash
+$ pipenv shell
+```
+
+Agora, é só executar o servidor:
+
+```bash
+python server.py
+```
+
+### Configuração
 
 
 # DESCRIÇÃO
 
 # Api
-
-### requirements.txt
 
 ### server.py
 
