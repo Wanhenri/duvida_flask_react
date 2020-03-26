@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Wrapper, Section } from "./styles";
+import PropTypes from "prop-types";
 
 import ReactEcharts from "echarts-for-react";
 
@@ -49,18 +50,22 @@ class EchartGraph extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.series !== prevProps.series) {
       const newOptions = Object.assign(this.state.graphOption, {
-        title: [{ text: this.props.textTile, x: "center" }],
-        series: this.props.series.map(s => {
+        title: [{ text: this.props.title, x: "center" }],
+        series: this.props.series.map((s) => {
           return Object.assign(s, {
             type: "line",
             smooth: this.props.smooth || false
           });
         }),
         legend: {
-          data: this.props.series.map(s => s.name)
+          show: true,
+          data: this.props.series.map((s) => s.name),
+          orient: "horizontal",
+          left: "left"
         },
         xAxis: this.props.xAxis,
-        yAxis: {
+        yAxis: Object.assign(this.props.yAxis || {}, {
+          type: "value",
           min:
             Math.ceil(
               Math.min.apply(
@@ -79,7 +84,7 @@ class EchartGraph extends Component {
             ) *
               this.props.limit +
             this.props.limit
-        }
+        })
       });
       this.echartsReactRef.getEchartsInstance().setOption(newOptions);
     }
@@ -95,7 +100,7 @@ class EchartGraph extends Component {
         <Section>
           <ReactEcharts
             style={{ height: "50vh", width: "80vw", margin: "auto" }}
-            ref={e => {
+            ref={(e) => {
               this.echartsReactRef = e;
             }}
             option={this.state.graphOption}
@@ -105,5 +110,23 @@ class EchartGraph extends Component {
     );
   }
 }
+
+EchartGraph.propTypes = {
+  series: PropTypes.array.isRequired,
+  smooth: PropTypes.bool,
+  xAxis: PropTypes.arrayOf(
+    PropTypes.objectOf({
+      type: PropTypes.string,
+      data: PropTypes.array
+    })
+  ).isRequired,
+  yAxis: PropTypes.object,
+  limit: PropTypes.number
+};
+
+EchartGraph.defaultProps = {
+  limit: 1,
+  smooth: true
+};
 
 export default EchartGraph;

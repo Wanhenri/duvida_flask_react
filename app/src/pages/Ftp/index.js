@@ -4,6 +4,7 @@ import ObsMerge from "../../components/Observer/ObsMerge";
 import Eta5km from "../../components/Forecast/Eta5km";
 import Satelite from "../../components/Observer/Satelite";
 import moment from "moment";
+import WRF from "../../components/Forecast/WRF";
 
 const dateNow = moment().format("YYYYMMDD");
 const dateY1 = moment()
@@ -73,6 +74,9 @@ const FTP = () => (
         date={dateNow}
         fct="72"
       />
+    </Section>
+    <Section>
+      <WRF></WRF>
     </Section>
   </Wrapper>
 );

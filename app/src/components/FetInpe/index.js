@@ -13,9 +13,9 @@ const FetInpe = () => {
         "Content-Type": "application/json"
       }
     })
-      .then(response => response.json())
-      .then(data => setWeather(data))
-      .catch(error => console.log(error));
+      .then((response) => response.json())
+      .then((data) => setWeather(data))
+      .catch((error) => console.log(error));
   }, []);
 
   const cityNames = {
@@ -62,7 +62,7 @@ const FetInpe = () => {
   return (
     <Container>
       <Section>
-        {weather.map(w => (
+        {weather.map((w) => (
           <Card key={w.codigo}>
             <b>{w.atualizacao}</b>
             <p>{w.codigo}</p>
@@ -84,7 +84,7 @@ const FetInpe = () => {
               radius: "55%",
               center: ["50%", "50%"],
               data: weather
-                .map(w => {
+                .map((w) => {
                   return {
                     name: cityNames[w.codigo].cidade,
                     value: w.temperatura
@@ -124,8 +124,8 @@ const FetInpe = () => {
               }
             }
           ]}
-          textTile={"Estações de Superfície dos Aeroportos"}
-          subtextTile={"Temperatura das Capitais"}
+          title={"Estações de Superfície dos Aeroportos"}
+          subtitle={"Temperatura das Capitais"}
           limit={5}
         />
         <EchartGraphBar
@@ -133,7 +133,7 @@ const FetInpe = () => {
             ["Temperatura", "Capital"],
             ...weather
               .sort((a, b) => a.temperatura - b.temperatura)
-              .map(w => [w.temperatura, cityNames[w.codigo].cidade])
+              .map((w) => [w.temperatura, cityNames[w.codigo].cidade])
           ]}
         />
       </Section>
