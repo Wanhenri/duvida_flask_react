@@ -1,6 +1,9 @@
 import { createGlobalStyle} from "styled-components";
 
 const Base = createGlobalStyle`
+    * {
+        box-sizing: border-box;
+    }
     html, body{  
         font-size:var(--size-base);      
         font-family: 'Roboto Slab', serif; /* font dos textos */
