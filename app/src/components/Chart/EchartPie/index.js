@@ -5,12 +5,12 @@ import ReactEcharts from "echarts-for-react";
 class EchartGraphPie extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {      
+    this.state = {
       graphOption: {
-        backgroundColor: '#ffff',
+        backgroundColor: "#ffff",
         title: {
           text: "Temperatura das Capitais",
-          subtext:"teste teste teste testes teste teste",
+          subtext: "teste teste teste testes teste teste",
           left: "center",
           top: 20,
           textStyle: {
@@ -41,19 +41,21 @@ class EchartGraphPie extends Component {
               { value: 274, name: "联盟广告" },
               { value: 235, name: "视频广告" },
               { value: 400, name: "搜索引擎" }
-            ].sort(function(a, b) { return a.value - b.value; }),
+            ].sort(function(a, b) {
+              return a.value - b.value;
+            }),
             roseType: "radius",
             label: {
               normal: {
                 textStyle: {
-                  color: 'rgba(255, 255, 255, 0.3)'
+                  color: "rgba(255, 255, 255, 0.3)"
                 }
               }
             },
             labelLine: {
               normal: {
                 lineStyle: {
-                  color: 'rgba(255, 255, 255, 0.3)'
+                  color: "rgba(255, 255, 255, 0.3)"
                 },
                 smooth: 0.2,
                 length: 10,
@@ -71,13 +73,12 @@ class EchartGraphPie extends Component {
             animationEasing: "elasticOut",
             animationDelay: function(idx) {
               return Math.random() * 200;
-            }          
+            }
           }
-        ]     
+        ]
       }
     };
   }
-
 
   componentDidMount() {
     this.echartsInstance = this.echartsReactRef.getEchartsInstance();
@@ -89,12 +90,15 @@ class EchartGraphPie extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.series !== prevProps.series) {
       const newOptions = Object.assign(this.state.graphOption, {
-        title: [{ 
-          text: this.props.textTile,
-          subtext: this.props.subtextTile }],
+        title: [
+          {
+            text: this.props.title,
+            subtext: this.props.subtitle
+          }
+        ],
         series: this.props.series,
         legend: {
-          data: this.props.series.map(s => s.name)
+          data: this.props.series.map((s) => s.name)
         }
       });
       this.echartsReactRef.getEchartsInstance().setOption(newOptions);
@@ -111,7 +115,7 @@ class EchartGraphPie extends Component {
         <Section>
           <ReactEcharts
             style={{ height: "40vh", width: "70vw", margin: "auto" }}
-            ref={e => {
+            ref={(e) => {
               this.echartsReactRef = e;
             }}
             option={this.state.graphOption}

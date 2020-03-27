@@ -41,7 +41,7 @@ const FetSomar = () => {
   });
 
   const buscaPrevisao = async (cidade, done) => {
-    await fetch("http://localhost:5000/somar", {
+    await fetch(`${process.env.REACT_APP_API_URL}/somar`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -51,12 +51,12 @@ const FetSomar = () => {
         diasprevisao: "7"
       })
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         setWeather(data);
         done();
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -95,7 +95,7 @@ const FetSomar = () => {
         <FormLead onSubmit={buscaPrevisao} />
       </Section>
       <Section style={{ flexDirection: "row" }}>
-        {weather.data.map(w => (
+        {weather.data.map((w) => (
           <Cards key={w.day} BackgroundColor={"#eaeaea"}>
             <b>
               {moment(w.day)
@@ -111,7 +111,7 @@ const FetSomar = () => {
         ))}
       </Section>
       <Section style={{ flexDirection: "row" }}>
-        {weather.data.map(w => (
+        {weather.data.map((w) => (
           <Cards
             key={w.day}
             BackgroundColor={"#ffff"}
@@ -200,7 +200,7 @@ const FetSomar = () => {
         <EchartGraphBarHorizontal
           xAxis={{
             type: "category",
-            data: weather.forecast_period.map(w =>
+            data: weather.forecast_period.map((w) =>
               moment(w)
                 .locale("pt-br")
                 .format("dddd")
@@ -213,30 +213,36 @@ const FetSomar = () => {
             {
               name: "Max temperature",
               type: "bar",
-              data: weather.data.map(w => parseFloat(w.temperature_daily_max)),
+              data: weather.data.map((w) =>
+                parseFloat(w.temperature_daily_max)
+              ),
               yAxisIndex: 0
             },
             {
               name: "Min temperature",
               type: "bar",
-              data: weather.data.map(w => parseFloat(w.temperature_daily_min)),
+              data: weather.data.map((w) =>
+                parseFloat(w.temperature_daily_min)
+              ),
               yAxisIndex: 1
             },
             {
               name: "Relative Humidity Daily Average",
               type: "line",
-              data: weather.data.map(w => parseFloat(w.rel_humidity_daily_avg)),
+              data: weather.data.map((w) =>
+                parseFloat(w.rel_humidity_daily_avg)
+              ),
               yAxisIndex: 2
             }
           ]}
           smooth={true}
-          textTile={"Forecast - Visao Geral"}
+          title={"Forecast - Visao Geral"}
           limit={5}
         />
         <EchartGraph
           xAxis={{
             type: "category",
-            data: weather.forecast_period.map(w =>
+            data: weather.forecast_period.map((w) =>
               moment(w)
                 .locale("pt-br")
                 .format("dddd")
@@ -245,7 +251,7 @@ const FetSomar = () => {
           series={[
             {
               name: "Forecast Max temperature",
-              data: weather.data.map(w => w.temperature_daily_max),
+              data: weather.data.map((w) => w.temperature_daily_max),
               lineStyle: {
                 normal: {
                   type: "dashed",
@@ -255,18 +261,18 @@ const FetSomar = () => {
             },
             {
               name: "Forecast Min temperature",
-              data: weather.data.map(w => w.temperature_daily_min)
+              data: weather.data.map((w) => w.temperature_daily_min)
             }
           ]}
           smooth={true}
           type={"line"}
-          textTile={"Max and Min Temperature Forecast"}
+          title={"Max and Min Temperature Forecast"}
           limit={5}
         />
         <EchartGraph
           xAxis={{
             type: "category",
-            data: weather.observed_period.map(w =>
+            data: weather.observed_period.map((w) =>
               moment(w)
                 .locale("pt-br")
                 .format("dddd")
@@ -275,22 +281,22 @@ const FetSomar = () => {
           series={[
             {
               name: "Max temperature",
-              data: weather.data.map(w => w.max_temperature)
+              data: weather.data.map((w) => w.max_temperature)
             },
             {
               name: "Min temperature",
-              data: weather.data.map(w => w.min_temperature)
+              data: weather.data.map((w) => w.min_temperature)
             }
           ]}
           smooth={true}
           type={"line"}
-          textTile={"Max and Min Temperature Observer"}
+          title={"Max and Min Temperature Observer"}
           limit={5}
         />
         <EchartGraph
           xAxis={{
             type: "category",
-            data: weather.observed_period.map(w =>
+            data: weather.observed_period.map((w) =>
               moment(w)
                 .locale("pt-br")
                 .format("dddd")
@@ -299,17 +305,17 @@ const FetSomar = () => {
           series={[
             {
               name: "Relativy Humidity daily average Observer",
-              data: weather.data.map(w => w.mean_rel_humidity)
+              data: weather.data.map((w) => w.mean_rel_humidity)
             }
           ]}
-          textTile={"Relativy Humidity daily average Observer"}
+          title={"Relativy Humidity daily average Observer"}
           smooth={true}
           limit={10}
         />
         <EchartGraph
           xAxis={{
             type: "category",
-            data: weather.forecast_period.map(w =>
+            data: weather.forecast_period.map((w) =>
               moment(w)
                 .locale("pt-br")
                 .format("dddd")
@@ -318,12 +324,46 @@ const FetSomar = () => {
           series={[
             {
               name: "Relativy Humidity daily average Forecast",
-              data: weather.data.map(w => w.rel_humidity_daily_avg)
+              data: weather.data.map((w) => w.rel_humidity_daily_avg)
             }
           ]}
-          textTile={"Relativy Humidity daily average Forecast"}
+          title={"Relativy Humidity daily average Forecast"}
           smooth={true}
           limit={10}
+        />
+        <EchartGraph
+          xAxis={{
+            type: "category",
+            data: weather.forecast_period.map((w) =>
+              moment(w)
+                .locale("pt-br")
+                .format("dddd")
+            )
+          }}
+          series={[
+            {
+              name: "Precipitation Daily acu",
+              data: weather.data.map((w) => w.precipitation_daily_acu),
+              lineStyle: {
+                normal: {
+                  type: "dashed",
+                  width: 1
+                }
+              }
+            },
+            {
+              name: "Precipitation Daily max",
+              data: weather.data.map((w) => w.precipitation_daily_max)
+            },
+            {
+              name: "Precipitation Daily min",
+              data: weather.data.map((w) => w.precipitation_daily_min)
+            }
+          ]}
+          smooth={true}
+          type={"line"}
+          title={"Precipitation"}
+          limit={5}
         />
       </Section>
       <Section style={styles}>

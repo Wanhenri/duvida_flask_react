@@ -29,7 +29,7 @@ de maneira acessível.
 Para instalar os pacotes utilizados pela API execute o comando abaixo:
 
 ```bash
-$ pip install requirements.txt
+$ pipenv install
 ```
 
 ### Configuração
@@ -42,11 +42,10 @@ configurar as chaves para cada serviço disponível.
 Para rodar a API, ative o ambiente virtual, com o comando abaixo:
 
 ```bash
-$ source ./env/scripts/activate
-(.env)
+$ pipenv shell
 ```
 
-E então, execute a API com o seguinte comando:
+E então, execute o servidor com o seguinte comando:
 
 ```bash
 $ python server.py

@@ -9,11 +9,13 @@ from routes.inpe import Inpe
 from routes.inmet import Inmet
 from routes.inpe_TQ0666 import Inpe_TQ0666
 from routes.wrf_ams05km import Inpe_wrf_ams05km
+from routes.root import Root
 
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
+api.add_resource(Root, "/")
 api.add_resource(Somar, '/somar')
 api.add_resource(Teste, '/teste')
 api.add_resource(Inpe, '/inpe')

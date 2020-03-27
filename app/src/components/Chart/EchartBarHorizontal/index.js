@@ -153,14 +153,14 @@ class EchartGraphBarHorizontal extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.series !== prevProps.series) {
       const newOptions = Object.assign(this.state.graphOption, {
-        title: [{ text: this.props.textTile, x: "center" }],
-        series: this.props.series.map(s => {
+        title: [{ text: this.props.title, x: "center" }],
+        series: this.props.series.map((s) => {
           return Object.assign(s, {
             smooth: this.props.smooth || false
           });
         }),
         legend: {
-          data: this.props.series.map(s => s.name)
+          data: this.props.series.map((s) => s.name)
         },
         xAxis: this.props.xAxis,
         yAxis: [
@@ -252,7 +252,7 @@ class EchartGraphBarHorizontal extends Component {
         <Section>
           <ReactEcharts
             style={{ height: "50vh", width: "80vw", margin: "auto" }}
-            ref={e => {
+            ref={(e) => {
               this.echartsReactRef = e;
             }}
             option={this.state.graphOption}

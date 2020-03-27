@@ -46,7 +46,15 @@ def get_inmet(date):
 
 class Inmet(Resource):
     def get(self):
+
         date = request.args.get("date")
         if(not date):
             return Response("Missing parameter date",status=400)
+          
         return get_inmet(date)
+
+        # def post(self):
+        #    json_data = request.get_json()
+        #    date = json_data['date']
+        #    inmet__reports = get_inmet(date)
+        #    return inmet__reports
