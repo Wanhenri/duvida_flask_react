@@ -1,4 +1,5 @@
-# Projeto React + Flask
+# Desenvolvimento do Projeto Portfolio
+### Projeto React + Flask
 
 ## Pré-requisitos
 
@@ -11,3 +12,15 @@ Abaixo temos uma lista dos pré-requisitos para utilização e desenvolvimento d
 | npm*                                                           | v6.9.0  |
 
 * *: No Windows o `npm` é instalado juntamente com o `Node.js`
+
+## Autores
+
+* **Wanderson Henrique dos Santos** - *Desenvolvedor do Projeto* - [Wanhenri](https://github.com/Wanhenri)
+* **Matheus Reis** - *Desenvolvedor/Tutor/Code Review* - [ReisDev](https://github.com/reisdev)
+
+## Autores da versão da documentação
+
+Esse documento foi gerado a partir de template desenvolvido por:
+
+* **Billie Thompson** - *Texto Original* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Matheus Reis** - *Tradução para PT-BR* - [ReisDev](https://github.com/reisdev)
