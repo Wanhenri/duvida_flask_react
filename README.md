@@ -1,6 +1,8 @@
 # Desenvolvimento do Projeto Portfolio
 ### Projeto React + Flask
 
+teste
+
 ## Pré-requisitos
 
 Abaixo temos uma lista dos pré-requisitos para utilização e desenvolvimento das aplicações contidas nesse repositório:
