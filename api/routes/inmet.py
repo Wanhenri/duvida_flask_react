@@ -1,9 +1,8 @@
 import requests
 import json
-from flask import request
+from flask import request, Response
 from flask_restful import Resource
 from datetime import datetime
-
 
 def parseData(r):
     d = dict()
@@ -47,9 +46,11 @@ def get_inmet(date):
 
 class Inmet(Resource):
     def get(self):
-        #date = request.args.get("date")
-        date = "20200228"
-        print("get", date)
+
+        date = request.args.get("date")
+        if(not date):
+            return Response("Missing parameter date",status=400)
+          
         return get_inmet(date)
 
         # def post(self):

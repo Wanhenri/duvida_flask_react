@@ -13,9 +13,10 @@ const FetInpe = () => {
         "Content-Type": "application/json"
       }
     })
-      .then((response) => response.json())
-      .then((data) => setWeather(data))
-      .catch((error) => console.log(error));
+      .then(response => response.json())
+      .then(data => setWeather(data.filter(a => a.codigo !== "SBPJ")))
+      .catch(error => console.log(error));
+
   }, []);
 
   const cityNames = {
@@ -58,6 +59,10 @@ const FetInpe = () => {
       }}
     />
   );
+
+  useEffect(() => {
+    console.log(weather)
+  },[weather])
 
   return (
     <Container>
